@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../../shared/widgets/domo_leading_logo.dart';
 import '../providers/auth_controller.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -94,7 +95,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   children: [
                     // Logo / ícone
                     SvgPicture.asset(
-                      'assets/icons/domo_icon.svg',
+                      domoIconAsset(context),
                       height: 60,
                     ),
                     const SizedBox(height: AppSpacing.lg),
