@@ -200,6 +200,20 @@ class CasaRepositoryImpl implements CasaRepository {
     final snap = await docRef.get();
     final codigo = snap.data()?['codigo'] as String?;
 
+    // Firestore has no cascade delete: delete the pantry items first, while
+    // the casa doc still exists (the itens rules need it), in chunks below the
+    // 500-writes-per-batch limit. Otherwise they would be orphaned forever.
+    const chunk = 400;
+    while (true) {
+      final itens = await docRef.collection('itens').limit(chunk).get();
+      if (itens.docs.isEmpty) break;
+      final itensBatch = _db.batch();
+      for (final d in itens.docs) {
+        itensBatch.delete(d.reference);
+      }
+      await itensBatch.commit();
+    }
+
     final batch = _db.batch();
     if (codigo != null) {
       batch.delete(_codigos.doc(codigo));

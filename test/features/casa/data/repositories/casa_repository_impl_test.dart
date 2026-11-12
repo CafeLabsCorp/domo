@@ -140,6 +140,24 @@ void main() {
       expect(casaSnap.exists, isFalse);
       expect(codigoSnap.exists, isFalse);
     });
+
+    test('apaga também os itens da despensa (sem órfãos, mesmo > 1 lote)',
+        () async {
+      final casa = await repo.criarCasa(
+        nome: 'Casa com itens',
+        userId: 'u1',
+        nomeUsuario: 'Fê',
+      );
+      final itens = firestore.collection('casas').doc(casa.id).collection('itens');
+      for (var i = 0; i < 450; i++) {
+        await itens.doc('i$i').set({'nome': 'Item $i'});
+      }
+
+      await repo.deletarCasa(casaId: casa.id);
+
+      final restantes = await itens.get();
+      expect(restantes.docs, isEmpty);
+    });
   });
 
   group('atualizarOrdemCategorias', () {
