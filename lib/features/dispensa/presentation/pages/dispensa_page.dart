@@ -11,6 +11,7 @@ import '../providers/dispensa_provider.dart';
 import '../widgets/add_edit_item_sheet.dart';
 import '../widgets/pantry_item_card.dart';
 import '../../../../shared/widgets/domo_error_state.dart';
+import '../../../../shared/widgets/erro_snack.dart';
 import '../../../../shared/widgets/domo_leading_logo.dart' show DomoPageTitle;
 
 class DispensaPage extends ConsumerWidget {
@@ -64,6 +65,7 @@ class _DispensaContent extends ConsumerWidget {
     final itensAsync = ref.watch(itensProvider(casaId));
     final controller = ref.read(dispensaControllerProvider.notifier);
     final l10n = AppLocalizations.of(context)!;
+    escutarErroDoControlador(context, ref, dispensaControllerProvider);
 
     return Scaffold(
       appBar: AppBar(

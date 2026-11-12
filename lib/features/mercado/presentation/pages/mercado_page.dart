@@ -10,6 +10,7 @@ import '../../../dispensa/domain/models/pantry_item.dart';
 import '../../../dispensa/presentation/providers/dispensa_controller.dart';
 import '../../../dispensa/presentation/providers/dispensa_provider.dart';
 import '../../../../shared/widgets/domo_error_state.dart';
+import '../../../../shared/widgets/erro_snack.dart';
 import '../../../../shared/widgets/domo_leading_logo.dart' show DomoPageTitle;
 
 class MercadoPage extends ConsumerWidget {
@@ -52,6 +53,7 @@ class _MercadoContent extends ConsumerWidget {
     final itensAsync = ref.watch(itensProvider(casaId));
     final controller = ref.read(dispensaControllerProvider.notifier);
     final l10n = AppLocalizations.of(context)!;
+    escutarErroDoControlador(context, ref, dispensaControllerProvider);
 
     return Scaffold(
       appBar: AppBar(

@@ -13,6 +13,7 @@ import '../providers/casa_controller.dart';
 import '../providers/casa_provider.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/widgets/domo_error_state.dart';
+import '../../../../shared/widgets/erro_snack.dart';
 import '../../../../shared/widgets/domo_leading_logo.dart' show DomoPageTitle;
 
 class CasaPage extends ConsumerWidget {
@@ -83,6 +84,7 @@ class CasaPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final casaAsync = ref.watch(casaDoUsuarioProvider);
     final l10n = AppLocalizations.of(context)!;
+    escutarErroDoControlador(context, ref, casaControllerProvider);
 
     return casaAsync.when(
       loading: () => const Scaffold(
