@@ -927,3 +927,52 @@ describe('unauthenticated writes', () => {
     );
   });
 });
+
+// ---------------------------------------------------------------------------
+// usuarios/{uid} — private index of houses where the user is pendente, used by
+// account deletion. Owner-only; only { pendenteEm: list }.
+// ---------------------------------------------------------------------------
+describe('usuarios (índice de pendências)', () => {
+  const ref = (d, id) => doc(d, 'usuarios', id);
+
+  test('o dono do índice cria e lê o próprio doc', async () => {
+    const d = db(PENDING);
+    await assertSucceeds(setDoc(ref(d, PENDING), { pendenteEm: [CASA_ID] }));
+    await assertSucceeds(getDoc(ref(d, PENDING)));
+  });
+
+  test('arrayUnion (como o app grava) funciona com merge', async () => {
+    const d = db(PENDING);
+    await assertSucceeds(
+      setDoc(ref(d, PENDING), { pendenteEm: arrayUnion('a') }, { merge: true }),
+    );
+    await assertSucceeds(
+      setDoc(ref(d, PENDING), { pendenteEm: arrayUnion('b') }, { merge: true }),
+    );
+  });
+
+  test('o dono apaga o próprio índice', async () => {
+    const d = db(PENDING);
+    await setDoc(ref(d, PENDING), { pendenteEm: [CASA_ID] });
+    await assertSucceeds(deleteDoc(ref(d, PENDING)));
+  });
+
+  test('outro usuário não lê nem escreve o índice alheio', async () => {
+    await setDoc(ref(db(PENDING), PENDING), { pendenteEm: [CASA_ID] });
+    await assertFails(getDoc(ref(db(STRANGER), PENDING)));
+    await assertFails(setDoc(ref(db(STRANGER), PENDING), { pendenteEm: [] }));
+    await assertFails(deleteDoc(ref(db(STRANGER), PENDING)));
+  });
+
+  test('campo extra ou tipo errado é recusado', async () => {
+    const d = db(PENDING);
+    await assertFails(
+      setDoc(ref(d, PENDING), { pendenteEm: [], email: 'x@y.z' }),
+    );
+    await assertFails(setDoc(ref(d, PENDING), { pendenteEm: 'casa1' }));
+  });
+
+  test('anônimo não acessa', async () => {
+    await assertFails(getDoc(ref(anon(), PENDING)));
+  });
+});

@@ -255,6 +255,20 @@ service cloud.firestore {
       }
     }
 
+    // ---- usuarios (per-user private index) --------------------------------
+    // `usuarios/{uid}.pendenteEm` lists the casaIds where this user asked to
+    // join (still pendente). A pendente is NOT in any membrosAtivos, so the
+    // client could never find those houses again; this index lets account
+    // deletion remove the user's name/e-mail/photo from them. Holds only
+    // casaIds (no personal data) and is readable/writable by its owner alone.
+    match /usuarios/{userId} {
+      allow read, delete: if signedIn() && uid() == userId;
+      allow create, update: if signedIn() && uid() == userId
+        && next().keys().hasOnly(['pendenteEm'])
+        && next().pendenteEm is list
+        && next().pendenteEm.size() <= 20;
+    }
+
     // ---- codigos (join-code lookup) --------------------------------------
     // Doc id IS the join code. Holds only { casaId } (optionally a display
     // nome). Resolving a code is a `get` by id — you must already know the code

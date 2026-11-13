@@ -124,6 +124,13 @@ class CasaRepositoryImpl implements CasaRepository {
       status: MembroStatus.pendente,
     );
 
+    // Index of houses where this user is pendente (see firestore.rules,
+    // `usuarios`). Written BEFORE the join so no pending membership is ever
+    // untracked: account deletion walks this list to clean them up.
+    await _db.collection('usuarios').doc(userId).set({
+      'pendenteEm': FieldValue.arrayUnion([casaId]),
+    }, SetOptions(merge: true));
+
     await docRef.update({
       'membros.$userId': membro.toJson(),
     });

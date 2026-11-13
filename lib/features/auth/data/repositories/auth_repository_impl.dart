@@ -62,6 +62,41 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  bool get usuarioEntraComGoogle =>
+      _auth.currentUser?.providerData.any((p) => p.providerId == 'google.com') ??
+      false;
+
+  @override
+  Future<void> reautenticar({String? senha}) async {
+    final user = _auth.currentUser!;
+    if (usuarioEntraComGoogle) {
+      if (kIsWeb) {
+        await user.reauthenticateWithPopup(GoogleAuthProvider());
+        return;
+      }
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) throw const ReautenticacaoCancelada();
+      final googleAuth = await googleUser.authentication;
+      await user.reauthenticateWithCredential(
+        GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        ),
+      );
+      return;
+    }
+    await user.reauthenticateWithCredential(
+      EmailAuthProvider.credential(email: user.email!, password: senha ?? ''),
+    );
+  }
+
+  @override
+  Future<void> excluirUsuario() async {
+    await _auth.currentUser!.delete();
+    await _googleSignIn.signOut();
+  }
+
+  @override
   Future<void> signOut() async {
     await Future.wait([
       _auth.signOut(),
