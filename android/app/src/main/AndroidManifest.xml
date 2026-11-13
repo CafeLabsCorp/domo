@@ -1,6 +1,14 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Analytics without the advertising id: `firebase-analytics` can pull in
+         play-services-ads-identifier, which declares AD_ID in ITS OWN
+         manifest; `tools:node="remove"` strips it from the merged manifest so
+         the app never requests the advertising id (Play Data Safety and the
+         privacy policy say we do not collect it). -->
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />
+
     <application
-        android:label="domo"
+        android:label="Domo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -30,6 +38,16 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+        <!-- Belt and suspenders with the AD_ID removal above: even if a future
+             dependency re-adds the permission, these flags keep the SDK from
+             collecting the advertising id or personalizing on Google signals. -->
+        <meta-data
+            android:name="google_analytics_adid_collection_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="google_analytics_default_allow_ad_personalization_signals"
+            android:value="false" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and

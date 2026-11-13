@@ -157,6 +157,25 @@ class AppLocalizationsPt extends AppLocalizations {
   String get leave => 'Sair';
 
   @override
+  String get privacySection => 'Privacidade';
+
+  @override
+  String get usageMeasurementTitle => 'Medição de uso';
+
+  @override
+  String get usageMeasurementSubtitle =>
+      'Ajuda a melhorar o Domo com dados anônimos de uso. Sem nomes, itens ou códigos.';
+
+  @override
+  String get privacyPolicyLink => 'Política de privacidade';
+
+  @override
+  String get termsOfUseLink => 'Termos de uso';
+
+  @override
+  String get couldNotOpenLink => 'Não consegui abrir o link.';
+
+  @override
   String get deleteAccount => 'Excluir conta';
 
   @override

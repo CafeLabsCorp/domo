@@ -19,8 +19,13 @@ class AnalyticsService {
 
   /// Enables analytics collection. Call once at app bootstrap, right after
   /// `Firebase.initializeApp`.
-  Future<void> init() {
-    return _analytics.setAnalyticsCollectionEnabled(true);
+  Future<void> init({bool enabled = true}) {
+    return _analytics.setAnalyticsCollectionEnabled(enabled);
+  }
+
+  /// Applies the "Medição de uso" switch from the Profile screen.
+  Future<void> setEnabled(bool enabled) {
+    return _analytics.setAnalyticsCollectionEnabled(enabled);
   }
 
   /// "Criar casa" — fires once a house is fully created: the `casas/{id}`

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'core/analytics/analytics_opt_out.dart';
 import 'core/analytics/analytics_service.dart';
 import 'core/providers/locale_provider.dart';
 import 'core/providers/theme_provider.dart';
@@ -17,7 +18,12 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // Não aguarda nem propaga falha: analytics é opcional e não pode travar o boot do app.
-  unawaited(AnalyticsService().init().catchError((_) {}));
+  // Respeita a escolha salva em Perfil -> "Medição de uso" (ligada por padrão).
+  unawaited(
+    lerMedicaoDeUsoAtivada()
+        .then((ativada) => AnalyticsService().init(enabled: ativada))
+        .catchError((_) {}),
+  );
   runApp(const ProviderScope(child: DomoApp()));
 }
 

@@ -14,6 +14,10 @@ import '../../../casa/domain/models/casa_model.dart';
 import '../../../casa/domain/models/membro_model.dart';
 import '../../../casa/presentation/providers/casa_provider.dart';
 import '../../../../shared/widgets/domo_error_state.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../../../core/analytics/analytics_opt_out.dart';
+import '../../../../core/legal/legal_links.dart';
 import '../widgets/excluir_conta_dialog.dart';
 import '../../../../shared/widgets/domo_leading_logo.dart' show DomoPageTitle;
 
@@ -53,6 +57,21 @@ class _ProfileContent extends ConsumerWidget {
           (m) => m?.userId == user.uid,
           orElse: () => null,
         );
+  }
+
+  Future<void> _abrirLink(BuildContext context, String url) async {
+    var ok = false;
+    try {
+      ok = await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+    } catch (_) {}
+    if (!ok && context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.couldNotOpenLink),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
   }
 
   void _excluirConta(BuildContext context, int membrosAtivos) {
@@ -233,6 +252,33 @@ class _ProfileContent extends ConsumerWidget {
                       ref.read(localeProvider.notifier).state = set.first;
                     },
                   ),
+                ),
+              ],
+            ),
+            const SizedBox(height: AppSpacing.md),
+
+            _SectionLabel(l10n.privacySection, theme),
+            _CardSection(
+              children: [
+                SwitchListTile(
+                  secondary: const Icon(Icons.insights_outlined),
+                  title: Text(l10n.usageMeasurementTitle),
+                  subtitle: Text(l10n.usageMeasurementSubtitle),
+                  value: ref.watch(medicaoDeUsoProvider),
+                  onChanged: (v) =>
+                      ref.read(medicaoDeUsoProvider.notifier).definir(v),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.privacy_tip_outlined),
+                  title: Text(l10n.privacyPolicyLink),
+                  trailing: const Icon(Icons.open_in_new, size: 18),
+                  onTap: () => _abrirLink(context, LegalLinks.privacyPolicy),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.description_outlined),
+                  title: Text(l10n.termsOfUseLink),
+                  trailing: const Icon(Icons.open_in_new, size: 18),
+                  onTap: () => _abrirLink(context, LegalLinks.termsOfUse),
                 ),
               ],
             ),

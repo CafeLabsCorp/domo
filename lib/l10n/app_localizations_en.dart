@@ -157,6 +157,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get leave => 'Leave';
 
   @override
+  String get privacySection => 'Privacy';
+
+  @override
+  String get usageMeasurementTitle => 'Usage measurement';
+
+  @override
+  String get usageMeasurementSubtitle =>
+      'Helps improve Domo with anonymous usage data. No names, items or codes.';
+
+  @override
+  String get privacyPolicyLink => 'Privacy policy';
+
+  @override
+  String get termsOfUseLink => 'Terms of use';
+
+  @override
+  String get couldNotOpenLink => 'Couldn\'t open the link.';
+
+  @override
   String get deleteAccount => 'Delete account';
 
   @override

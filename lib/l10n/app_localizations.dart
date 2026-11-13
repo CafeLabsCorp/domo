@@ -386,6 +386,42 @@ abstract class AppLocalizations {
   /// **'Sair'**
   String get leave;
 
+  /// No description provided for @privacySection.
+  ///
+  /// In pt, this message translates to:
+  /// **'Privacidade'**
+  String get privacySection;
+
+  /// No description provided for @usageMeasurementTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Medição de uso'**
+  String get usageMeasurementTitle;
+
+  /// No description provided for @usageMeasurementSubtitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ajuda a melhorar o Domo com dados anônimos de uso. Sem nomes, itens ou códigos.'**
+  String get usageMeasurementSubtitle;
+
+  /// No description provided for @privacyPolicyLink.
+  ///
+  /// In pt, this message translates to:
+  /// **'Política de privacidade'**
+  String get privacyPolicyLink;
+
+  /// No description provided for @termsOfUseLink.
+  ///
+  /// In pt, this message translates to:
+  /// **'Termos de uso'**
+  String get termsOfUseLink;
+
+  /// No description provided for @couldNotOpenLink.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não consegui abrir o link.'**
+  String get couldNotOpenLink;
+
   /// No description provided for @deleteAccount.
   ///
   /// In pt, this message translates to:
