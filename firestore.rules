@@ -261,12 +261,19 @@ service cloud.firestore {
     // client could never find those houses again; this index lets account
     // deletion remove the user's name/e-mail/photo from them. Holds only
     // casaIds (no personal data) and is readable/writable by its owner alone.
+    // `aceite` = { versao, em }: which version of the Terms/Privacy Policy the
+    // user accepted, and when (proof of consent; erased with the account).
     match /usuarios/{userId} {
       allow read, delete: if signedIn() && uid() == userId;
       allow create, update: if signedIn() && uid() == userId
-        && next().keys().hasOnly(['pendenteEm'])
-        && next().pendenteEm is list
-        && next().pendenteEm.size() <= 20;
+        && next().keys().hasOnly(['pendenteEm', 'aceite'])
+        && (!('pendenteEm' in next())
+            || (next().pendenteEm is list && next().pendenteEm.size() <= 20))
+        && (!('aceite' in next())
+            || (next().aceite is map
+                && next().aceite.keys().hasOnly(['versao', 'em'])
+                && next().aceite.versao is string
+                && next().aceite.em is timestamp));
     }
 
     // ---- codigos (join-code lookup) --------------------------------------

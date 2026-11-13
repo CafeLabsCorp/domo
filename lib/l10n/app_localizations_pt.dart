@@ -176,6 +176,19 @@ class AppLocalizationsPt extends AppLocalizations {
   String get couldNotOpenLink => 'Não consegui abrir o link.';
 
   @override
+  String get legalAcceptRegister => 'Li e aceito os ';
+
+  @override
+  String get legalAcceptContinue => 'Ao continuar, você aceita os ';
+
+  @override
+  String get legalAnd => ' e a ';
+
+  @override
+  String get legalAcceptRequired =>
+      'Para criar a conta, aceite os termos e a política.';
+
+  @override
   String get deleteAccount => 'Excluir conta';
 
   @override

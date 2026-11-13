@@ -57,12 +57,16 @@ void main() {
   }
 
   Future<void> preencher(WidgetTester tester,
-      {String nome = '', String email = 'ana@exemplo.com'}) async {
+      {String nome = '', String email = 'ana@exemplo.com', bool aceitar = true}) async {
     final campos = find.byType(TextFormField);
     await tester.enterText(campos.at(0), nome);
     await tester.enterText(campos.at(1), email);
     await tester.enterText(campos.at(2), 'senha123');
     await tester.enterText(campos.at(3), 'senha123');
+    if (aceitar) {
+      await tester.ensureVisible(find.byType(Checkbox));
+      await tester.tap(find.byType(Checkbox));
+    }
     await tester.ensureVisible(find.byType(FilledButton).first);
     await tester.tap(find.byType(FilledButton).first);
     await tester.pump();
@@ -72,6 +76,14 @@ void main() {
     final repo = await pump(tester);
     await preencher(tester);
     expect(find.text('Informe seu nome.'), findsOneWidget);
+    expect(repo.nome, isNull);
+  });
+
+  testWidgets('sem aceitar os termos o cadastro não envia', (tester) async {
+    final repo = await pump(tester);
+    await preencher(tester, nome: 'Ana', aceitar: false);
+    expect(find.text('Para criar a conta, aceite os termos e a política.'),
+        findsOneWidget);
     expect(repo.nome, isNull);
   });
 

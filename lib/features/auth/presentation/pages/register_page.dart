@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../l10n/app_localizations.dart';
+import '../../../../shared/widgets/legal_links_text.dart';
 import '../providers/auth_controller.dart';
 
 class RegisterPage extends ConsumerStatefulWidget {
@@ -22,6 +23,8 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   final _confirmController = TextEditingController();
   bool _obscurePassword = true;
   bool _obscureConfirm = true;
+  bool _aceitou = false;
+  bool _aceiteFaltando = false;
 
   @override
   void dispose() {
@@ -47,7 +50,9 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   }
 
   Future<void> _register() async {
-    if (!_formKey.currentState!.validate()) return;
+    final formOk = _formKey.currentState!.validate();
+    setState(() => _aceiteFaltando = !_aceitou);
+    if (!formOk || !_aceitou) return;
     await ref.read(authControllerProvider.notifier).registerWithEmail(
           _nameController.text.trim(),
           _emailController.text.trim(),
@@ -203,6 +208,40 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                         return null;
                       },
                     ),
+                    const SizedBox(height: AppSpacing.md),
+
+                    // Aceite dos Termos de uso e da Política de privacidade
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Checkbox(
+                          value: _aceitou,
+                          onChanged: isLoading
+                              ? null
+                              : (v) => setState(() {
+                                    _aceitou = v ?? false;
+                                    if (_aceitou) _aceiteFaltando = false;
+                                  }),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 12),
+                            child: LegalLinksText(prefix: l10n.legalAcceptRegister),
+                          ),
+                        ),
+                      ],
+                    ),
+                    if (_aceiteFaltando)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12, top: 2),
+                        child: Text(
+                          l10n.legalAcceptRequired,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.error,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
                     const SizedBox(height: AppSpacing.xl),
 
                     // Botão criar conta

@@ -422,6 +422,30 @@ abstract class AppLocalizations {
   /// **'Não consegui abrir o link.'**
   String get couldNotOpenLink;
 
+  /// No description provided for @legalAcceptRegister.
+  ///
+  /// In pt, this message translates to:
+  /// **'Li e aceito os '**
+  String get legalAcceptRegister;
+
+  /// No description provided for @legalAcceptContinue.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ao continuar, você aceita os '**
+  String get legalAcceptContinue;
+
+  /// No description provided for @legalAnd.
+  ///
+  /// In pt, this message translates to:
+  /// **' e a '**
+  String get legalAnd;
+
+  /// No description provided for @legalAcceptRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Para criar a conta, aceite os termos e a política.'**
+  String get legalAcceptRequired;
+
   /// No description provided for @deleteAccount.
   ///
   /// In pt, this message translates to:

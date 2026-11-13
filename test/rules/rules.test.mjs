@@ -39,7 +39,7 @@ import {
   updateDoc,
   where,
 } from 'firebase/firestore';
-import { deleteField, arrayUnion, arrayRemove } from 'firebase/firestore';
+import { deleteField, arrayUnion, arrayRemove, serverTimestamp } from 'firebase/firestore';
 
 const PROJECT_ID = 'domo-rules-test';
 const RULES_PATH = new URL('../../firestore.rules', import.meta.url);
@@ -974,5 +974,28 @@ describe('usuarios (índice de pendências)', () => {
 
   test('anônimo não acessa', async () => {
     await assertFails(getDoc(ref(anon(), PENDING)));
+  });
+
+  test('registro de aceite dos termos { versao, em } é aceito', async () => {
+    const d = db(PENDING);
+    await assertSucceeds(
+      setDoc(
+        ref(d, PENDING),
+        { aceite: { versao: '2026-11-rascunho', em: serverTimestamp() } },
+        { merge: true },
+      ),
+    );
+  });
+
+  test('aceite com campo extra ou sem versão é recusado', async () => {
+    const d = db(PENDING);
+    await assertFails(
+      setDoc(ref(d, PENDING), {
+        aceite: { versao: 'v1', em: serverTimestamp(), ip: '1.2.3.4' },
+      }),
+    );
+    await assertFails(
+      setDoc(ref(d, PENDING), { aceite: { em: serverTimestamp() } }),
+    );
   });
 });

@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../../../core/legal/legal_links.dart';
 import '../../domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -39,14 +41,32 @@ class AuthRepositoryImpl implements AuthRepository {
     if (user != null) {
       await user.updateDisplayName(displayName);
       await user.reload();
+      await _registrarAceite(user.uid);
     }
+  }
+
+  /// Records which version of the Terms / Privacy Policy the user accepted
+  /// (`usuarios/{uid}.aceite`). Best effort: a failure here must never block
+  /// sign-up, the screen already made the user accept explicitly.
+  Future<void> _registrarAceite(String uid) async {
+    try {
+      await FirebaseFirestore.instance.collection('usuarios').doc(uid).set({
+        'aceite': {
+          'versao': LegalLinks.termsVersion,
+          'em': FieldValue.serverTimestamp(),
+        },
+      }, SetOptions(merge: true));
+    } catch (_) {}
   }
 
   @override
   Future<void> signInWithGoogle() async {
     if (kIsWeb) {
       final provider = GoogleAuthProvider();
-      await _auth.signInWithPopup(provider);
+      final cred = await _auth.signInWithPopup(provider);
+      if (cred.additionalUserInfo?.isNewUser ?? false) {
+        await _registrarAceite(cred.user!.uid);
+      }
       return;
     }
 
@@ -58,7 +78,10 @@ class AuthRepositoryImpl implements AuthRepository {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-    await _auth.signInWithCredential(credential);
+    final cred = await _auth.signInWithCredential(credential);
+    if (cred.additionalUserInfo?.isNewUser ?? false) {
+      await _registrarAceite(cred.user!.uid);
+    }
   }
 
   @override

@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../shared/widgets/domo_leading_logo.dart';
+import '../../../../shared/widgets/legal_links_text.dart';
 import '../providers/auth_controller.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -206,7 +207,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                       icon: const _GoogleIcon(),
                       label: Text(l10n.googleButton),
                     ),
-                    const SizedBox(height: AppSpacing.xl),
+                    const SizedBox(height: AppSpacing.sm),
+                    Center(
+                      child: LegalLinksText(prefix: l10n.legalAcceptContinue),
+                    ),
+                    const SizedBox(height: AppSpacing.lg),
 
                     // Link criar conta
                     Row(
