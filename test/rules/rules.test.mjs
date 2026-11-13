@@ -133,9 +133,9 @@ describe('casa reads', () => {
     await assertSucceeds(getDoc(casaRef(db(MEMBER))));
   });
 
-  test('pendente member can read the casa (to see approval status)', async () => {
+  test('pendente member cannot read the casa (member list has names/e-mails)', async () => {
     await seedCasa();
-    await assertSucceeds(getDoc(casaRef(db(PENDING))));
+    await assertFails(getDoc(casaRef(db(PENDING))));
   });
 
   test("member's arrayContains stream returns only their casas", async () => {

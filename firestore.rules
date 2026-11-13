@@ -146,10 +146,11 @@ service cloud.firestore {
 
     match /casas/{casaId} {
 
-      // GET (single doc by id): only members of THIS house (active OR pendente)
-      // may read it. A pendente reads it to see their own approval status.
-      // Non-members never read it. Authorized off the `membros` map.
-      allow get: if isMemberOfCurrent();
+      // GET (single doc by id): only ACTIVE members of THIS house may read it.
+      // The doc carries every member's name, e-mail and photo, so a pendente
+      // (who only knows the join code) must NOT read it. The client never needs
+      // that read: approval shows up through the membrosAtivos stream below.
+      allow get: if isActiveMemberOfCurrent();
 
       // LIST (collection query): the ONLY supported query is the client's
       // `where membrosAtivos array-contains <uid>` household stream. We key
