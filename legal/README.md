@@ -1,6 +1,7 @@
 # legal/ — documentos legais do Domo
 
-Rascunhos criados em 2026-11-12 pelo `compliance` do Forge, a partir do código do
+Rascunhos criados em 2026-11-12 (v0.2 em 2026-11-13, atualizada para 13+, opt-out,
+nome de exibição, exclusão de conta e `domo-cafelabs`) pelo `compliance` do Forge, a partir do código do
 app. **Nenhum foi revisado por advogado(a).** Não publicar, não linkar na Play e
 não tratar como proteção jurídica antes da revisão.
 
@@ -16,9 +17,9 @@ Convenções dentro dos textos:
 
 - `TODO: confirmar`: depende de decisão do Felipe ou de conferência no console
   do Firebase. Não inventar.
-- `[A IMPLEMENTAR]` / `[TO BE IMPLEMENTED]`: descreve função que o app ainda
-  não tem (exclusão de conta, opt-out da medição). O trecho só vai ao ar se a
-  função existir.
+- `[A IMPLEMENTAR]` / `[TO BE IMPLEMENTED]`: função que o app ainda não tem. Na
+  versão 0.2 (2026-11-13) não sobrou nenhum: tudo o que os textos descrevem existe
+  no app.
 
 Modelo: os documentos aprovados do Dindin (`dindin/legal/`). Os textos
 públicos devem ir para páginas HTML da `domo-landing` (`/privacidade`,

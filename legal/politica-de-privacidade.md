@@ -1,6 +1,6 @@
 # Política de Privacidade — Domo
 
-**Versão 0.1 (RASCUNHO), 12 de novembro de 2026**
+**Versão 0.2 (RASCUNHO), 13 de novembro de 2026**
 **Status: NÃO revisada por advogado(a). Não publicar nem usar como proteção real antes da revisão.**
 
 > Notas internas (não fazem parte do texto público):
@@ -14,11 +14,13 @@
 >   `lib/core/analytics/analytics_service.dart`, `pubspec.yaml`,
 >   `AndroidManifest.xml`, e da landing `domo-landing` (Vercel Analytics).
 >   Se o app mudar o que coleta, esta política precisa mudar junto.
-> - Trechos marcados `TODO: confirmar` dependem de decisão do Felipe ou de
->   conferência no console do Firebase. Trechos marcados `[A IMPLEMENTAR]`
->   descrevem funções que **ainda não existem no app** e não podem ir ao ar
->   como estão: ou a função é implementada antes da publicação, ou o trecho
->   é reescrito.
+> - Versão 0.2 (2026-11-13): atualizada para o app como está agora (exclusão de
+>   conta, opt-out da medição, nome de exibição no cadastro, pendente sem
+>   acesso à lista de membros, Advertising ID removido, projeto
+>   `domo-cafelabs` com Firestore em `southamerica-east1`) e para a decisão de
+>   aceitar 13 anos ou mais. Todas as funções descritas existem no código.
+> - Trechos marcados `TODO: confirmar` dependem de decisão do Felipe, de
+>   conferência no console (Firebase, Analytics) ou do advogado.
 > - Documento separado dos Termos de Uso (`termos-de-uso.md`), de propósito.
 
 ---
@@ -31,8 +33,9 @@ compras que sai dela. Você cria uma "casa" ou entra numa casa que já existe
 usando um código de convite, e todos os membros veem e editam a mesma lista.
 
 Para isso o Domo precisa de uma conta (e-mail, ou login com Google). **Os
-membros da sua casa veem o seu nome, a sua foto e, se você entrou com e-mail e
-senha, o seu e-mail.** É assim que eles sabem quem está na casa.
+membros da sua casa veem o seu nome e, se você entrou com Google, a sua foto.**
+É assim que eles sabem quem está na casa. O seu e-mail não aparece para os
+outros membros.
 
 O Domo **não vende dados, não mostra anúncios, não pede CPF, endereço,
 telefone, localização por GPS ou dados de pagamento**. Ele não faz compras por
@@ -61,8 +64,7 @@ trocar por razão social e CNPJ.
 - **Vercel Inc.:** hospeda apenas o site de apresentação `domo.cafelabs.net`,
   que não tem login nem recebe dados da sua conta.
 
-**Canal de contato sobre privacidade:** `privacidade@cafelabs.net`
-(`TODO: confirmar` que o mesmo e-mail do Dindin atende o Domo).
+**Canal de contato sobre privacidade:** `privacidade@cafelabs.net`.
 
 A Café Labs é hoje um agente de tratamento de pequeno porte e, nos termos da
 Resolução CD/ANPD nº 2/2022, está dispensada de indicar formalmente um(a)
@@ -76,16 +78,26 @@ indicação será feita e esta política será atualizada.
 
 Criados quando você se cadastra, e guardados pelo Firebase Authentication:
 
-- **E-mail**: identificador de login.
+- **E-mail**: identificador de login. Não é mostrado aos outros membros das
+  casas.
+- **Nome**: o que você digita no cadastro com e-mail e senha, ou o nome da sua
+  conta Google. É o nome que os membros da casa veem.
 - **Senha**: só se você se cadastrou com e-mail e senha. É guardada pelo Google
   de forma cifrada e **não é legível pela Café Labs**.
-- **Nome e foto de perfil da conta Google**: só se você usar "Entrar com
-  Google". Vêm da sua conta Google; o Domo não pede esses dados a você.
+- **Foto de perfil da conta Google**: só se você usar "Entrar com Google".
+  Vem da sua conta Google; o Domo não pede esse dado a você.
 - **Identificador interno da conta (UID)**: código gerado pelo Firebase que
   liga você às casas de que participa.
 - **Datas de criação da conta e do último acesso**, e o **endereço IP** usado no
   cadastro e no login, registrados pelo Firebase Authentication para segurança
   e prevenção de abuso.
+- **Registro de aceite**: a versão dos Termos de Uso e da Política de
+  Privacidade que você aceitou e a data e hora do aceite. Fica num registro
+  privado seu no Cloud Firestore, que só você acessa, e serve para comprovar
+  que o aceite ocorreu.
+- **Lista de casas em que você aguarda aprovação**: um registro privado, também
+  só seu, com o código das casas em que você pediu para entrar e ainda não foi
+  aprovado. Existe para que a exclusão da conta consiga limpar esses pedidos.
 
 ### 3.2 Dados da casa e dos membros (visíveis para os outros membros)
 
@@ -94,19 +106,17 @@ Quando você cria uma casa ou entra numa, o Domo guarda no Cloud Firestore:
 - **Da casa**: o nome que o criador deu, o código de convite de 6 caracteres,
   quem criou e quando, e a ordem escolhida para as categorias da despensa.
 - **De cada membro, inclusive você**:
-  - **nome exibido**: o nome da sua conta Google ou, **se você entrou com
-    e-mail e senha, o seu próprio e-mail** (o Domo ainda não permite escolher um
-    nome de exibição — `TODO: confirmar` se isso muda antes da publicação);
+  - **nome exibido**: o nome que você digitou no cadastro com e-mail e senha
+    ou o nome da sua conta Google (se a conta não tiver nome, aparece
+    "Usuário");
   - **link da foto de perfil** da conta Google, se houver;
   - **cargo** ("Administrador" ou "Membro", só um rótulo);
   - **situação**: ativo ou pendente (aguardando aprovação).
 
-**Quem vê esses dados:** todos os membros da casa. **Atenção:** quem digita o
-código de convite e pede para entrar passa a ver o nome da casa e a lista de
-membros (nome, e-mail quando for o caso, foto e cargo) **já enquanto aguarda
-aprovação**, mesmo que depois seja recusado. Por isso, compartilhe o código só
-com quem você conhece. `TODO: confirmar` — ver nota de produto no relatório
-(pode ser corrigido no app em vez de só avisado aqui).
+**Quem vê esses dados:** os membros **ativos** da casa. Quem digita o código de
+convite e pede para entrar fica como **pendente** e **não vê a lista de
+membros nem os itens** enquanto não for aprovado; vê apenas o nome da casa, que
+o código revela. Mesmo assim, compartilhe o código só com quem você conhece.
 
 Para que o código de convite funcione, o Domo também guarda um registro que
 liga o código à casa, com o **nome da casa**. Qualquer pessoa com conta no Domo
@@ -143,9 +153,10 @@ remédio, etc.) além do necessário para a casa se organizar.
 
 ### 3.5 O que fica só no seu aparelho
 
-A escolha de tema (claro/escuro) e de idioma não é enviada a nenhum servidor.
-`TODO: confirmar` — hoje essas escolhas nem são guardadas entre aberturas do app;
-se passarem a ser guardadas, continuam só no aparelho.
+A sua escolha sobre a medição de uso (seção 3.6) e as escolhas de tema
+(claro/escuro) e de idioma não são enviadas a nenhum servidor.
+`TODO: confirmar` — hoje o tema e o idioma nem são guardados entre aberturas do
+app; se passarem a ser guardados, continuam só no aparelho.
 
 ### 3.6 Dados de uso (medição do aplicativo)
 
@@ -168,22 +179,23 @@ o que melhorar. A medição coleta:
 O que **não** entra na medição: o seu nome, o seu e-mail, o seu UID, o nome da
 casa, o código de convite, o nome dos itens ou das categorias.
 
-- **Identificador de publicidade (Advertising ID)**: `TODO: confirmar` — hoje o
-  app Android **não desliga** essa coleta, que o SDK do Google Analytics faz por
-  padrão. A recomendação é desligar antes de publicar (como no Dindin), e então
-  este parágrafo diz: "a coleta do identificador de publicidade e os 'sinais do
-  Google' ficam desligados". Se continuar ligada, este parágrafo precisa dizer
-  que o identificador é coletado, e a declaração de Advertising ID na Play
-  muda.
+- **Identificador de publicidade (Advertising ID)**: o app Android **não**
+  coleta o identificador de publicidade (a permissão foi removida do app e a
+  coleta foi desligada no Analytics), e a personalização por "sinais do Google"
+  também fica desligada.
 - **No aplicativo web**, a medição usa cookies e armazenamento local do
-  navegador do Google Analytics. `TODO: confirmar` decisão sobre aviso/banner
-  de cookies no app web (ver relatório).
+  navegador do Google Analytics. Não há banner de bloqueio prévio: a medição é
+  feita com base no legítimo interesse (seção 5) e você pode desligá-la a
+  qualquer momento em Perfil → Privacidade → Medição de uso.
 - Esses dados **não** são usados para anúncios, não são combinados com dados de
   outros apps ou sites e não são vendidos. `TODO: confirmar` no console do
   Google Analytics: "sinais do Google" desligado e configurações de
   compartilhamento de dados desligadas.
-- **[A IMPLEMENTAR]** Você pode desligar essa medição dentro do aplicativo, em
-  Perfil → Privacidade, a qualquer momento e sem perder nenhuma função.
+- Você pode desligar essa medição dentro do aplicativo, em Perfil →
+  Privacidade → Medição de uso, a qualquer momento e sem perder nenhuma função.
+  A escolha vale na hora e fica guardada só no seu aparelho ou navegador. Se
+  você limpar os dados do app ou do navegador, a medição volta ao padrão
+  (ligada) e é preciso desligar de novo.
 
 ### 3.7 O que NÃO é coletado
 
@@ -218,6 +230,7 @@ na landing no momento da publicação.
 |---|---|
 | Criar e manter a sua conta e reconhecer você no login | e-mail, senha, dados da conta Google (se usada), UID |
 | Criar casas, convidar e aprovar membros, mostrar quem está na casa | dados da casa e dos membros (3.2) |
+| Comprovar que você aceitou os Termos e a Política | registro de aceite (3.1) |
 | Guardar a despensa e a lista de compras e sincronizá-las entre os aparelhos dos membros | itens (3.3) |
 | Impedir que uma pessoa acesse casas das quais não faz parte | UID, situação de membro, regras de segurança do Firestore |
 | Manter o serviço funcionando e seguro (corrigir falhas, prevenir abuso) | dados técnicos (3.4), IP |
@@ -242,12 +255,13 @@ acesso ao aplicativo**.
 | Tratamento | Base legal (Lei 13.709/2018 — LGPD) |
 |---|---|
 | Conta (e-mail, senha, dados da conta Google, UID) | art. 7º, V — execução de contrato do qual você é parte (os Termos de Uso) |
-| Dados da casa e dos membros, inclusive mostrar o seu nome/e-mail/foto aos membros | art. 7º, V — execução de contrato: dividir a casa com outras pessoas é a função do app |
+| Dados da casa e dos membros, inclusive mostrar o seu nome e a sua foto aos membros | art. 7º, V — execução de contrato: dividir a casa com outras pessoas é a função do app |
+| Registro de aceite dos Termos e da Política | art. 7º, VI — exercício regular de direitos (comprovar o aceite, se necessário) |
 | Itens da despensa e lista de compras | art. 7º, V — execução de contrato |
 | Controle de acesso e proteção contra uso indevido | art. 7º, V, e art. 7º, IX — legítimo interesse na segurança do serviço |
 | Registros técnicos (IP, logs do Firebase) | art. 7º, IX — legítimo interesse na operação e segurança |
 | Atendimento a pedidos de titular | art. 7º, II — cumprimento de obrigação legal |
-| Medição de uso do aplicativo (3.6) | art. 7º, IX — legítimo interesse na melhoria do produto, sem uso publicitário e com opção de desligar no app **[A IMPLEMENTAR]** `TODO: confirmar` com o advogado se, no app web (cookies), a base deve ser consentimento |
+| Medição de uso do aplicativo (3.6) | art. 7º, IX — legítimo interesse na melhoria do produto, sem uso publicitário e com opção de desligar no app, inclusive na versão web (cookies). `TODO: confirmar` com o advogado se, no app web, a base deve ser consentimento |
 | Medição agregada do site de apresentação | art. 7º, IX — legítimo interesse, sem identificação individual |
 | Comunicação promocional (não existe hoje) | art. 7º, I — consentimento específico e destacado, se um dia existir |
 
@@ -256,18 +270,12 @@ Recusar comunicação promocional **não** limita nada no aplicativo.
 ## 6. Onde os dados ficam e transferência internacional
 
 A sua conta e os dados das casas ficam no **Google Firebase** (Firebase
-Authentication e Cloud Firestore), no projeto `domo-8b336`.
+Authentication e Cloud Firestore), no projeto `domo-cafelabs`.
 
-`TODO: confirmar` a região do banco Firestore do projeto `domo-8b336`
-(Firebase Console → Firestore → região, imutável). Usar **um** dos dois textos:
-
-- **Se a região for `southamerica-east1` (São Paulo):** "Os dados das casas
-  ficam armazenados em território nacional. O Google, como operador, pode
-  acessá-los a partir de outros países exclusivamente para suporte e operação
-  da infraestrutura."
-- **Se a região for outra (por exemplo `nam5` ou `us-central1`, Estados
-  Unidos):** "Os dados das casas (nomes, e-mails e fotos dos membros, itens da
-  despensa) **ficam armazenados nos Estados Unidos**, em servidores do Google."
+O banco Cloud Firestore fica na região `southamerica-east1` (São Paulo), então
+**os dados das casas ficam armazenados em território nacional**. O Google, como
+operador, pode acessá-los a partir de outros países exclusivamente para suporte
+e operação da infraestrutura.
 
 O Firebase Authentication e o Google Analytics para Firebase operam na
 infraestrutura global do Google, independentemente da região do Firestore: **os
@@ -290,8 +298,9 @@ seção 3.8 sai do país por ali.
 |---|---|
 | Conta | enquanto a conta existir; você decide, não há expiração automática |
 | Seus dados de membro numa casa | enquanto você for membro; saem da casa quando você sai, é removido pelo criador ou exclui a conta |
+| Registro de aceite e lista de pedidos pendentes (3.1) | enquanto a conta existir; apagados na exclusão da conta |
 | Casa e itens | enquanto a casa existir; são apagados quando o criador exclui a casa |
-| Registro de "quem mudou por último" num item | fica no item enquanto a casa existir; depois que a sua conta é excluída, o código (UID) que fica ali não pode mais ser ligado a você, nem pela Café Labs. `TODO: confirmar` com o advogado se isso basta ou se o app deve apagar esse campo na exclusão |
+| Registro de "quem mudou por último" num item | fica no item enquanto a casa existir; depois que a sua conta é excluída, o código (UID) que fica ali não pode mais ser ligado a você, nem pela Café Labs. `TODO: confirmar` com o advogado se isso basta ou se o app deve apagar esse campo na exclusão (hoje o app não apaga) |
 | Conta inativa | não há exclusão automática por inatividade hoje; se isso mudar, você será avisado por e-mail com antecedência mínima de 30 dias |
 | Cópias de segurança manuais feitas pela Café Labs antes de atualizações do sistema | `TODO: confirmar` prazo. Hoje o procedimento de atualização manda copiar os dados das casas antes de mudanças, mas não define quando essa cópia é apagada. Sugestão: apagar em até 30 dias |
 | Cópias internas da infraestrutura do Google | conforme o ciclo de exclusão do provedor. `TODO: confirmar` o prazo a declarar (o Dindin declarou "até 30 dias"; conferir na documentação do Google Cloud/Firebase) |
@@ -309,9 +318,10 @@ Pela LGPD (art. 18), você pode a qualquer momento:
 - **Acessar** os seus dados: tudo o que o Domo guarda sobre você aparece nas
   telas do app (perfil, casa, despensa); se quiser uma cópia, peça pelo e-mail
   abaixo;
-- **Corrigir** dados: itens e situações você mesmo edita no app; o nome e a foto
-  vêm da sua conta Google e são corrigidos lá. `TODO: confirmar` — hoje quem
-  entra com e-mail não tem como trocar o nome exibido no app;
+- **Corrigir** dados: itens e situações você mesmo edita no app; a foto vem da
+  sua conta Google e é corrigida lá. `TODO: confirmar` — hoje o nome exibido
+  fica como foi digitado no cadastro, e o app ainda não tem tela para trocá-lo
+  (pode ser pedido pelo e-mail abaixo);
 - **Pedir a exclusão** da sua conta e dos seus dados (ver abaixo);
 - **Pedir a portabilidade**: o Domo ainda não tem exportação dentro do app;
   enviamos uma cópia dos seus dados e da sua casa em formato aberto e legível
@@ -319,58 +329,54 @@ Pela LGPD (art. 18), você pode a qualquer momento:
 - **Saber com quem** os seus dados são compartilhados (seção 2);
 - **Revogar** qualquer consentimento que você tenha dado separadamente;
 - **Se opor** a um tratamento que considere irregular, inclusive desligar a
-  medição de uso (seção 3.6) **[A IMPLEMENTAR]**;
+  medição de uso no próprio app (seção 3.6);
 - **Reclamar** à ANPD (Autoridade Nacional de Proteção de Dados).
 
-**Como pedir:** escreva para `privacidade@cafelabs.net`. A resposta é dada em
-até **15 dias**.
+**Como pedir:** o que o app permite fazer sozinho (excluir a conta, desligar a
+medição de uso) você faz direto nele; o restante, escreva para
+`privacidade@cafelabs.net`. A resposta é dada em até **15 dias**.
 
 ### Exclusão da conta: o que acontece na prática
 
-**[A IMPLEMENTAR]** — o Domo ainda não tem exclusão de conta. Texto proposto
-para quando existir:
-
 1. Você pede a exclusão dentro do aplicativo (Perfil → Excluir conta), pela
-   página pública `TODO: confirmar URL` (sugestão:
-   `https://domo.cafelabs.net/excluir-conta`) ou pelo e-mail
-   `privacidade@cafelabs.net`.
-2. São eliminados: a sua conta de login (Firebase Authentication) e os seus
-   dados de membro (nome, e-mail, foto, cargo) em todas as casas de que você
-   participa.
-3. **Casas que você criou:** `TODO: confirmar` decisão. Opção recomendada no
-   relatório: o app avisa quem são os outros membros e, ao confirmar, **a casa e
-   todos os itens são apagados para todos**. (Alternativa: exigir que você
-   exclua a casa antes; transferir a casa para outro membro ainda não existe.)
+   página pública `https://domo.cafelabs.net/excluir-conta` ou pelo e-mail
+   `privacidade@cafelabs.net`. No aplicativo, por segurança, o Domo pede que
+   você confirme a senha (ou entre de novo com o Google) antes de excluir.
+2. São eliminados: a sua conta de login (Firebase Authentication), os seus dados
+   de membro (nome e foto) em todas as casas de que você participa, os seus
+   pedidos de entrada ainda pendentes e os registros privados da seção 3.1.
+3. **Casas que você criou: a casa e todos os itens são apagados para todos os
+   membros.** O app avisa isso antes de você confirmar. Transferir a casa para
+   outro membro ainda não existe; se não quiser que a casa acabe, não exclua a
+   conta antes de combinar com os outros membros.
 4. **Casas das quais você participa sem tê-las criado:** você sai da casa; os
    itens que você cadastrou continuam lá, porque são a lista compartilhada da
-   casa, sem nenhum dado que identifique você.
+   casa, e o único vestígio é um código interno que não identifica você.
 5. Cópias de segurança expiram no prazo da seção 7 e não são restauradas.
 
 A exclusão é **definitiva e não reversível**.
 
 ## 9. Crianças e adolescentes
 
-`TODO: confirmar` — decisão do Felipe sobre a idade mínima (ver relatório). O
-texto abaixo segue a opção conservadora, igual à do Dindin (só maiores de 18
-anos criam conta). Como o Domo é um app de família, é realista que
-adolescentes da casa queiram usar; se a decisão for aceitar 12 a 17 anos, este
-item e o item 2 dos Termos precisam ser reescritos com o advogado.
+O Domo é um aplicativo de organização da casa e **pode ser usado por
+adolescentes a partir de 13 anos**, por exemplo numa casa com a família. O
+cadastro é **vedado a menores de 13 anos**. Ao criar a conta, você declara ter
+13 anos ou mais. `TODO: confirmar` com o advogado a idade mínima e o tratamento
+de dados de adolescentes (a LGPD, art. 14, trata crianças até 12 anos
+incompletos com consentimento de pai, mãe ou responsável).
 
-O Domo **não é destinado a menores de 18 anos** e a Café Labs não direciona o
-produto a crianças ou adolescentes.
-
-- **Menores de 12 anos (crianças):** o tratamento de dados de criança exige
-  consentimento específico e em destaque de pelo menos um dos pais ou do
-  responsável legal (art. 14, §1º, da LGPD). O Domo **não coleta esse
-  consentimento** e, portanto, **não deve ser usado por crianças**. Se tomarmos
-  conhecimento de que uma conta pertence a uma criança, ela será excluída.
-- **Entre 12 e 17 anos (adolescentes):** o tratamento, se ocorrer, é feito no
-  melhor interesse do adolescente (art. 14, caput). Os Termos de Uso restringem
-  o cadastro a maiores de 18 anos, e pai, mãe ou responsável pode pedir a
-  exclusão da conta pelo canal da seção 8.
+- **Menores de 13 anos:** o Domo não é destinado a eles e **não coleta o
+  consentimento** que a lei exige para crianças. Se tomarmos conhecimento de
+  que uma conta pertence a alguém com menos de 13 anos, ela será excluída.
+- **De 13 a 17 anos:** o tratamento é feito no melhor interesse do adolescente
+  (LGPD, art. 14, caput). O Domo só trata o necessário para o app funcionar
+  (nome, e-mail, foto da conta Google, itens da casa), não pede dado a mais por
+  causa da idade, e o responsável legal pode pedir a exclusão da conta pelo
+  canal da seção 8. Recomendamos que um responsável acompanhe o uso e a escolha
+  do que é escrito nos campos de texto livre.
 
 Em nenhuma hipótese dados de crianças ou adolescentes são usados para
-publicidade ou repassados a terceiros.
+publicidade ou repassados a terceiros. O Domo não exibe anúncios.
 
 ## 10. Segurança
 

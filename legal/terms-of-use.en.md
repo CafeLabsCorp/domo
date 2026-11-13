@@ -1,6 +1,6 @@
 # Terms of Use — Domo
 
-**Version 0.1 (DRAFT), November 12, 2026**
+**Version 0.2 (DRAFT), November 13, 2026**
 **Status: NOT reviewed by a lawyer. Do not publish or rely on it for real protection before review.**
 
 > Internal notes (not part of the public text):
@@ -12,7 +12,9 @@
 >   `https://domo.cafelabs.net/en/termos`).
 > - These Terms cover **usage rules and liability**. What data is collected
 >   and how it is handled is in the separate **Privacy Policy**.
-> - `[TO BE IMPLEMENTED]` items describe features that don't exist yet.
+> - Version 0.2 (2026-11-13): updated to the app as it is now (account deletion,
+>   pending members cannot see the member list, display name) and to the minimum
+>   age of 13. The features described exist in the code.
 
 ---
 
@@ -24,8 +26,8 @@ Items are organized into **houses**, and each house has members who see and
 edit the same list.
 
 Domo is provided by **Café Labs**, operated by Felipe Portes Antunes. Café Labs
-does not yet have its own company registration number (CNPJ)
-(`TODO: confirmar`). Contact: `contato@cafelabs.net` (`TODO: confirmar`).
+does not yet have its own company registration number (CNPJ).
+Contact: `contato@cafelabs.net`.
 
 ### 1.1 What Domo is NOT
 
@@ -40,8 +42,11 @@ does not yet have its own company registration number (CNPJ)
 
 - Using Domo requires an account, created with email and password or with a
   Google account.
-- Sign-up is **restricted to people aged 18 or over**. By creating an account
-  you state that you are 18 or older. `TODO: confirmar` minimum age.
+- Sign-up is **allowed from age 13**. By creating an account you state that you
+  are 13 or older. Anyone under 18 should use Domo with a guardian's knowledge.
+  `TODO: confirmar` the minimum age with the lawyer (see Privacy Policy, item 9).
+- When signing up with email and password you provide a **name**, which is what
+  other house members see. Use a name your house will recognize.
 - The account is **personal**. You are responsible for keeping your password
   secret and for what is done with your account.
 - If you suspect unauthorized access, contact us through section 13.
@@ -57,12 +62,13 @@ does not yet have its own company registration number (CNPJ)
 - **Every active member** can add, edit and delete items, change their status,
   close the cart and reorder the house's categories.
 - **The invite code grants access to the house.** Anyone with a Domo account
-  who has the code can ask to join and, while awaiting approval, can already see
-  the house name and the member list (name, photo and, for email sign-ups, email
-  address). Share the code only with people you trust. The house creator is
+  who has the code can ask to join. While awaiting approval the person is
+  pending and sees only the house name; **they see no members and no items**.
+  Share the code only with people you trust. The house creator is
   responsible for whom they approve.
-- By joining a house you agree that your name, photo and, where applicable,
-  email address are visible to the other members (Privacy Policy, item 3.2).
+- By joining a house you agree that your name and photo (from your Google
+  account, if any) are visible to the other active members. Your email address
+  is not shown (Privacy Policy, item 3.2).
 - You can leave a house at any time. `TODO: confirmar` what happens when the
   house creator wants to leave.
 
@@ -135,12 +141,14 @@ operate the service, as described in the Privacy Policy.
 
 ## 10. Account termination and deletion
 
-- **[TO BE IMPLEMENTED]** You can close your account at any time, without giving
-  a reason, in the app (Profile → Delete account), via the public page
-  `TODO: confirmar URL`, or by email to `privacidade@cafelabs.net`.
+- You can close your account at any time, without giving a reason, in the app
+  (Profile → Delete account), via the public page
+  `https://domo.cafelabs.net/excluir-conta`, or by email to
+  `privacidade@cafelabs.net`.
 - Deletion removes your login account and your member data in every house and
-  is **permanent and irreversible**. What happens to houses you created is
-  described in the Privacy Policy, item 8 (`TODO: confirmar`).
+  is **permanent and irreversible**. **If you created a house, it is deleted for
+  all members, with all its items**; the app warns you before you confirm. See
+  Privacy Policy, item 8.
 - Café Labs may close your account for violation of section 6, stating the
   reason by email, unless doing so would hinder an investigation or contradict a
   legal order.
@@ -148,7 +156,7 @@ operate the service, as described in the Privacy Policy.
 ## 11. Privacy
 
 Personal data processing is governed by the **Privacy Policy**, available at
-`TODO: confirmar URL` and in the app, which forms part of these Terms.
+`https://domo.cafelabs.net/privacidade` and in the app, which forms part of these Terms.
 
 ## 12. Changes to these Terms
 
@@ -160,10 +168,10 @@ versions are archived.
 ## 13. Governing law, venue and contact
 
 Brazilian law applies. Consumer matters are heard in the consumer's domicile;
-all other matters in Belo Horizonte, Minas Gerais, Brazil (`TODO: confirmar`).
+all other matters in Belo Horizonte, Minas Gerais, Brazil.
 
 Contact: `contato@cafelabs.net` (general) and `privacidade@cafelabs.net`
-(privacy and personal data). `TODO: confirmar`.
+(privacy and personal data).
 
 ---
 

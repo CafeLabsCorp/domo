@@ -1,6 +1,6 @@
 # Termos de Uso — Domo
 
-**Versão 0.1 (RASCUNHO), 12 de novembro de 2026**
+**Versão 0.2 (RASCUNHO), 13 de novembro de 2026**
 **Status: NÃO revisados por advogado(a). Não publicar nem usar como proteção real antes da revisão.**
 
 > Notas internas (não fazem parte do texto público):
@@ -12,7 +12,9 @@
 > - Este documento trata das **regras de uso e da responsabilidade**. O que é
 >   coletado e como os dados são tratados está na **Política de Privacidade**
 >   (`politica-de-privacidade.md`), que é um documento separado.
-> - Trechos `[A IMPLEMENTAR]` descrevem funções que ainda não existem no app.
+> - Versão 0.2 (2026-11-13): atualizado para o app como está agora (exclusão de
+>   conta, pendente sem acesso à lista de membros, nome de exibição) e para a
+>   idade mínima de 13 anos. As funções descritas existem no código.
 
 ---
 
@@ -25,7 +27,7 @@ carrinho), e uma lista de compras que sai dela. Os itens são organizados em
 
 O Domo é fornecido pela **Café Labs**, operada por Felipe Portes Antunes. A
 Café Labs ainda não possui CNPJ próprio (`TODO: confirmar` na data de
-publicação). Contato: `contato@cafelabs.net` (`TODO: confirmar`).
+publicação). Contato: `contato@cafelabs.net`.
 
 ### 1.1 O que o Domo NÃO é
 
@@ -42,9 +44,12 @@ publicação). Contato: `contato@cafelabs.net` (`TODO: confirmar`).
 
 - O uso do Domo exige uma conta, criada com e-mail e senha ou com uma conta
   Google.
-- O cadastro é **restrito a maiores de 18 anos**. Ao criar a conta, você
-  declara ter 18 anos ou mais. `TODO: confirmar` a idade mínima (ver item 9 da
-  Política de Privacidade).
+- O cadastro é **permitido a partir de 13 anos**. Ao criar a conta, você
+  declara ter 13 anos ou mais. Quem tem menos de 18 anos deve usar o Domo com o
+  conhecimento de um responsável. `TODO: confirmar` a idade mínima com o
+  advogado (ver item 9 da Política de Privacidade).
+- No cadastro com e-mail e senha você informa um **nome**, que é o que os outros
+  membros da casa veem. Use um nome pelo qual a sua casa reconheça você.
 - A conta é **pessoal**. Você é responsável por manter a sua senha em sigilo e
   pelo que for feito na sua conta.
 - Se suspeitar de acesso indevido, avise pelo canal da seção 13.
@@ -63,13 +68,13 @@ publicação). Contato: `contato@cafelabs.net` (`TODO: confirmar`).
 - **Todo membro ativo** pode adicionar, editar e apagar itens, mudar a
   situação deles, fechar o carrinho e reordenar as categorias da casa.
 - **O código de convite dá acesso à casa.** Qualquer pessoa com conta no Domo
-  que tenha o código pode pedir para entrar e, enquanto espera a aprovação, já
-  vê o nome da casa e a lista de membros (nome, foto e, para quem entrou com
-  e-mail, o e-mail). Compartilhe o código só com pessoas de confiança. Quem
-  criou a casa responde por quem aprova.
-- Ao entrar numa casa, você concorda que o seu nome, a sua foto e, se for o
-  caso, o seu e-mail fiquem visíveis para os outros membros. Ver a Política de
-  Privacidade, item 3.2.
+  que tenha o código pode pedir para entrar. Enquanto espera a aprovação, a
+  pessoa fica como pendente e vê apenas o nome da casa; **não vê membros nem
+  itens**. Compartilhe o código só com pessoas de confiança. Quem criou a casa
+  responde por quem aprova.
+- Ao entrar numa casa, você concorda que o seu nome e a sua foto (da conta
+  Google, se houver) fiquem visíveis para os outros membros ativos. O seu
+  e-mail não é mostrado. Ver a Política de Privacidade, item 3.2.
 - Você pode sair de uma casa a qualquer momento. `TODO: confirmar` o que
   acontece quando quem criou a casa quer sair (hoje o app não oferece essa
   opção a essa pessoa; transferir a casa não existe).
@@ -166,13 +171,14 @@ apenas para operar o serviço, conforme a Política de Privacidade.
 
 ## 10. Encerramento e exclusão da conta
 
-- **[A IMPLEMENTAR]** Você pode encerrar a sua conta a qualquer momento, sem
-  justificar, pelo aplicativo (Perfil → Excluir conta), pela página pública
-  `TODO: confirmar URL` (sugestão: `https://domo.cafelabs.net/excluir-conta`)
-  ou pelo e-mail `privacidade@cafelabs.net`.
+- Você pode encerrar a sua conta a qualquer momento, sem justificar, pelo
+  aplicativo (Perfil → Excluir conta), pela página pública
+  `https://domo.cafelabs.net/excluir-conta` ou pelo e-mail
+  `privacidade@cafelabs.net`.
 - A exclusão apaga a sua conta de login e os seus dados de membro em todas as
-  casas, e é **definitiva e irreversível**. O que acontece com as casas que você
-  criou está na Política de Privacidade, item 8 (`TODO: confirmar` a decisão).
+  casas, e é **definitiva e irreversível**. **Se você criou uma casa, ela é
+  apagada para todos os membros, com todos os itens**; o app avisa isso antes
+  de você confirmar. Detalhes na Política de Privacidade, item 8.
 - A Café Labs pode encerrar a sua conta em caso de violação da seção 6,
   comunicando o motivo por e-mail, salvo quando a comunicação prejudicar
   investigação ou contrariar determinação legal.
@@ -182,7 +188,7 @@ apenas para operar o serviço, conforme a Política de Privacidade.
 ## 11. Privacidade
 
 O tratamento de dados pessoais é regido pela **Política de Privacidade**,
-disponível em `TODO: confirmar URL` e dentro do aplicativo, que é parte
+disponível em `https://domo.cafelabs.net/privacidade` e dentro do aplicativo, que é parte
 integrante destes Termos.
 
 ---
@@ -200,10 +206,10 @@ conta conforme a seção 10. As versões anteriores ficam arquivadas.
 
 Aplica-se a lei brasileira. Fica eleito o foro do domicílio do consumidor para
 questões envolvendo pessoa consumidora, e o foro de Belo Horizonte/MG para as
-demais (`TODO: confirmar`, mesmo foro do Dindin).
+demais.
 
 Contato: `contato@cafelabs.net` (geral) e `privacidade@cafelabs.net`
-(privacidade e dados pessoais). `TODO: confirmar` os dois endereços.
+(privacidade e dados pessoais).
 
 ---
 
