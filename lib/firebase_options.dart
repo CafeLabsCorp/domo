@@ -47,30 +47,27 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBKvA2Fn-8g2Quw7ue5A7eRYvmP8wv9CBk',
-    appId: '1:336092925108:web:4431d0fa25bf1cdbff1be1',
-    messagingSenderId: '336092925108',
-    projectId: 'domo-8b336',
-    authDomain: 'domo-8b336.firebaseapp.com',
-    storageBucket: 'domo-8b336.firebasestorage.app',
-    measurementId: 'G-2YJJMJVDNZ',
+    apiKey: 'AIzaSyDybmEgzuD7OeaoZAvtLdXCiaxYxu4KN_o',
+    appId: '1:798134865286:web:5280bcc227e80cf855b007',
+    messagingSenderId: '798134865286',
+    projectId: 'domo-cafelabs',
+    authDomain: 'domo-cafelabs.firebaseapp.com',
+    storageBucket: 'domo-cafelabs.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDt8OOeDb6stRi6ne5tOCqTgUjn_YIK_0g',
-    appId: '1:336092925108:android:88865192830e1329ff1be1',
-    messagingSenderId: '336092925108',
-    projectId: 'domo-8b336',
-    storageBucket: 'domo-8b336.firebasestorage.app',
+    apiKey: 'AIzaSyBIsT5WS_tt5UFxoHMvKVVvBWXvkkpaCOg',
+    appId: '1:798134865286:android:f2e5fea48fb3d54b55b007',
+    messagingSenderId: '798134865286',
+    projectId: 'domo-cafelabs',
+    storageBucket: 'domo-cafelabs.firebasestorage.app',
   );
-
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBKvA2Fn-8g2Quw7ue5A7eRYvmP8wv9CBk',
-    appId: '1:336092925108:web:36a106187291f7c5ff1be1',
-    messagingSenderId: '336092925108',
-    projectId: 'domo-8b336',
-    authDomain: 'domo-8b336.firebaseapp.com',
-    storageBucket: 'domo-8b336.firebasestorage.app',
-    measurementId: 'G-RCYE3BRCX1',
+    apiKey: 'AIzaSyDybmEgzuD7OeaoZAvtLdXCiaxYxu4KN_o',
+    appId: '1:798134865286:web:5280bcc227e80cf855b007',
+    messagingSenderId: '798134865286',
+    projectId: 'domo-cafelabs',
+    authDomain: 'domo-cafelabs.firebaseapp.com',
+    storageBucket: 'domo-cafelabs.firebasestorage.app',
   );
 }

@@ -1,4 +1,4 @@
-package com.domo.app.domo
+package com.cafelabs.domo
 
 import io.flutter.embedding.android.FlutterActivity
 
