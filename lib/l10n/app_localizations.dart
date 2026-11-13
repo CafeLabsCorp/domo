@@ -176,6 +176,24 @@ abstract class AppLocalizations {
   /// **'Gerencie sua casa com sua família.'**
   String get loginSubtitle;
 
+  /// No description provided for @displayNameLabel.
+  ///
+  /// In pt, this message translates to:
+  /// **'Seu nome'**
+  String get displayNameLabel;
+
+  /// No description provided for @displayNameHelper.
+  ///
+  /// In pt, this message translates to:
+  /// **'Os outros membros da casa veem este nome.'**
+  String get displayNameHelper;
+
+  /// No description provided for @displayNameRequired.
+  ///
+  /// In pt, this message translates to:
+  /// **'Informe seu nome.'**
+  String get displayNameRequired;
+
   /// No description provided for @emailLabel.
   ///
   /// In pt, this message translates to:

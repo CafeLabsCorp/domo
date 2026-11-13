@@ -49,6 +49,15 @@ class AppLocalizationsPt extends AppLocalizations {
   String get loginSubtitle => 'Gerencie sua casa com sua família.';
 
   @override
+  String get displayNameLabel => 'Seu nome';
+
+  @override
+  String get displayNameHelper => 'Os outros membros da casa veem este nome.';
+
+  @override
+  String get displayNameRequired => 'Informe seu nome.';
+
+  @override
   String get emailLabel => 'E-mail';
 
   @override

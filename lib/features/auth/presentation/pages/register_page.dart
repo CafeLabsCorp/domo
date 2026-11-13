@@ -16,6 +16,7 @@ class RegisterPage extends ConsumerStatefulWidget {
 
 class _RegisterPageState extends ConsumerState<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmController = TextEditingController();
@@ -24,6 +25,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
 
   @override
   void dispose() {
+    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _confirmController.dispose();
@@ -47,6 +49,7 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
   Future<void> _register() async {
     if (!_formKey.currentState!.validate()) return;
     await ref.read(authControllerProvider.notifier).registerWithEmail(
+          _nameController.text.trim(),
           _emailController.text.trim(),
           _passwordController.text,
         );
@@ -100,6 +103,27 @@ class _RegisterPageState extends ConsumerState<RegisterPage> {
                       ),
                     ),
                     const SizedBox(height: AppSpacing.xl),
+
+                    // Campo nome (é o que os outros membros da casa veem)
+                    TextFormField(
+                      controller: _nameController,
+                      keyboardType: TextInputType.name,
+                      textCapitalization: TextCapitalization.words,
+                      textInputAction: TextInputAction.next,
+                      maxLength: 40,
+                      decoration: InputDecoration(
+                        labelText: l10n.displayNameLabel,
+                        helperText: l10n.displayNameHelper,
+                        prefixIcon: const Icon(Icons.person_outline),
+                      ),
+                      validator: (v) {
+                        if (v == null || v.trim().isEmpty) {
+                          return l10n.displayNameRequired;
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: AppSpacing.md),
 
                     // Campo e-mail
                     TextFormField(

@@ -15,6 +15,9 @@
 
   "loginTitle": "Welcome to Domo",
   "loginSubtitle": "Manage your home with your family.",
+  "displayNameLabel": "Your name",
+  "displayNameHelper": "Other house members will see this name.",
+  "displayNameRequired": "Enter your name.",
   "emailLabel": "Email",
   "emailRequired": "Enter your email.",
   "emailInvalid": "Invalid email.",

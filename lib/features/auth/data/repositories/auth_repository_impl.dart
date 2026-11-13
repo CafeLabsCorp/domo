@@ -25,10 +25,21 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<void> createUserWithEmailAndPassword({
+    required String displayName,
     required String email,
     required String password,
   }) async {
-    await _auth.createUserWithEmailAndPassword(email: email, password: password);
+    final cred = await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    // The name is what other house members see; without it the app would
+    // fall back to nothing personal (never the e-mail).
+    final user = cred.user;
+    if (user != null) {
+      await user.updateDisplayName(displayName);
+      await user.reload();
+    }
   }
 
   @override

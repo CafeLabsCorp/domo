@@ -21,7 +21,7 @@ class CasaController extends _$CasaController {
       () => ref.read(casaRepositoryProvider).criarCasa(
             nome: nome,
             userId: user.uid,
-            nomeUsuario: user.displayName ?? user.email ?? 'Usuário',
+            nomeUsuario: user.displayName ?? 'Usuário',
             fotoUrl: user.photoURL,
           ),
     );
@@ -36,7 +36,7 @@ class CasaController extends _$CasaController {
       () => ref.read(casaRepositoryProvider).entrarNaCasa(
             codigo: codigo,
             userId: user.uid,
-            nomeUsuario: user.displayName ?? user.email ?? 'Usuário',
+            nomeUsuario: user.displayName ?? 'Usuário',
             fotoUrl: user.photoURL,
           ),
     );

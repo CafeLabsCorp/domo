@@ -9,6 +9,7 @@ abstract class AuthRepository {
   });
 
   Future<void> createUserWithEmailAndPassword({
+    required String displayName,
     required String email,
     required String password,
   });

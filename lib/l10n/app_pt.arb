@@ -15,6 +15,9 @@
 
   "loginTitle": "Bem-vindo ao Domo",
   "loginSubtitle": "Gerencie sua casa com sua família.",
+  "displayNameLabel": "Seu nome",
+  "displayNameHelper": "Os outros membros da casa veem este nome.",
+  "displayNameRequired": "Informe seu nome.",
   "emailLabel": "E-mail",
   "emailRequired": "Informe seu e-mail.",
   "emailInvalid": "E-mail inválido.",
