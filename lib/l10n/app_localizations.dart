@@ -386,6 +386,48 @@ abstract class AppLocalizations {
   /// **'Sair'**
   String get leave;
 
+  /// No description provided for @deleteAccount.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir conta'**
+  String get deleteAccount;
+
+  /// No description provided for @deleteAccountTitle.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir conta'**
+  String get deleteAccountTitle;
+
+  /// No description provided for @deleteAccountBody.
+  ///
+  /// In pt, this message translates to:
+  /// **'Sua conta e seus dados serão apagados de forma definitiva. Esta ação não pode ser desfeita.'**
+  String get deleteAccountBody;
+
+  /// No description provided for @deleteAccountOwnerWarning.
+  ///
+  /// In pt, this message translates to:
+  /// **'A casa \"{casa}\" foi criada por você e será apagada para todos os {membros} membros, com todos os itens.'**
+  String deleteAccountOwnerWarning(String casa, int membros);
+
+  /// No description provided for @deleteAccountMemberInfo.
+  ///
+  /// In pt, this message translates to:
+  /// **'Você sai da casa \"{casa}\"; os outros membros continuam nela.'**
+  String deleteAccountMemberInfo(String casa);
+
+  /// No description provided for @deleteAccountGoogleHint.
+  ///
+  /// In pt, this message translates to:
+  /// **'Para confirmar, vamos pedir que você entre com o Google de novo.'**
+  String get deleteAccountGoogleHint;
+
+  /// No description provided for @deleteAccountConfirm.
+  ///
+  /// In pt, this message translates to:
+  /// **'Excluir minha conta'**
+  String get deleteAccountConfirm;
+
   /// No description provided for @deleteHouseTitle.
   ///
   /// In pt, this message translates to:

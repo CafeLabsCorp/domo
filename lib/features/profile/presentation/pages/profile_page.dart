@@ -14,6 +14,7 @@ import '../../../casa/domain/models/casa_model.dart';
 import '../../../casa/domain/models/membro_model.dart';
 import '../../../casa/presentation/providers/casa_provider.dart';
 import '../../../../shared/widgets/domo_error_state.dart';
+import '../widgets/excluir_conta_dialog.dart';
 import '../../../../shared/widgets/domo_leading_logo.dart' show DomoPageTitle;
 
 class ProfilePage extends ConsumerWidget {
@@ -52,6 +53,17 @@ class _ProfileContent extends ConsumerWidget {
           (m) => m?.userId == user.uid,
           orElse: () => null,
         );
+  }
+
+  void _excluirConta(BuildContext context, int membrosAtivos) {
+    showDialog(
+      context: context,
+      builder: (_) => ExcluirContaDialog(
+        uid: user.uid,
+        casa: casa,
+        membrosAtivos: membrosAtivos,
+      ),
+    );
   }
 
   void _confirmarSaida(BuildContext context, WidgetRef ref) {
@@ -236,6 +248,22 @@ class _ProfileContent extends ConsumerWidget {
                     style: TextStyle(color: theme.colorScheme.error),
                   ),
                   onTap: () => _confirmarSaida(context, ref),
+                ),
+                ListTile(
+                  leading: Icon(
+                    Icons.delete_forever_outlined,
+                    color: theme.colorScheme.error,
+                  ),
+                  title: Text(
+                    l10n.deleteAccount,
+                    style: TextStyle(color: theme.colorScheme.error),
+                  ),
+                  onTap: () => _excluirConta(
+                    context,
+                    membros
+                        .where((m) => m.status == MembroStatus.ativo)
+                        .length,
+                  ),
                 ),
               ],
             ),

@@ -157,6 +157,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get leave => 'Leave';
 
   @override
+  String get deleteAccount => 'Delete account';
+
+  @override
+  String get deleteAccountTitle => 'Delete account';
+
+  @override
+  String get deleteAccountBody =>
+      'Your account and your data will be permanently deleted. This cannot be undone.';
+
+  @override
+  String deleteAccountOwnerWarning(String casa, int membros) {
+    return 'You created the house \"$casa\": it will be deleted for all $membros members, with all its items.';
+  }
+
+  @override
+  String deleteAccountMemberInfo(String casa) {
+    return 'You will leave the house \"$casa\"; the other members stay in it.';
+  }
+
+  @override
+  String get deleteAccountGoogleHint =>
+      'To confirm, we will ask you to sign in with Google again.';
+
+  @override
+  String get deleteAccountConfirm => 'Delete my account';
+
+  @override
   String get deleteHouseTitle => 'Delete home';
 
   @override

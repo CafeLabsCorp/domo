@@ -52,6 +52,19 @@
   "leaveHouseTitle": "Leave home",
   "leaveHouseConfirm": "You'll lose access to this home. To come back, you'll need the invite code.",
   "leave": "Leave",
+  "deleteAccount": "Delete account",
+  "deleteAccountTitle": "Delete account",
+  "deleteAccountBody": "Your account and your data will be permanently deleted. This cannot be undone.",
+  "deleteAccountOwnerWarning": "You created the house \"{casa}\": it will be deleted for all {membros} members, with all its items.",
+  "@deleteAccountOwnerWarning": {
+    "placeholders": { "casa": { "type": "String" }, "membros": { "type": "int" } }
+  },
+  "deleteAccountMemberInfo": "You will leave the house \"{casa}\"; the other members stay in it.",
+  "@deleteAccountMemberInfo": {
+    "placeholders": { "casa": { "type": "String" } }
+  },
+  "deleteAccountGoogleHint": "To confirm, we will ask you to sign in with Google again.",
+  "deleteAccountConfirm": "Delete my account",
   "deleteHouseTitle": "Delete home",
   "copyCodeTooltip": "Copy code",
   "reorderCategoriesTooltip": "Reorder categories",

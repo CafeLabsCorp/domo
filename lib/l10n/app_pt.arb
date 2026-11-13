@@ -52,6 +52,19 @@
   "leaveHouseTitle": "Sair da casa",
   "leaveHouseConfirm": "Você vai perder o acesso a esta casa. Para voltar, precisará do código de convite.",
   "leave": "Sair",
+  "deleteAccount": "Excluir conta",
+  "deleteAccountTitle": "Excluir conta",
+  "deleteAccountBody": "Sua conta e seus dados serão apagados de forma definitiva. Esta ação não pode ser desfeita.",
+  "deleteAccountOwnerWarning": "A casa \"{casa}\" foi criada por você e será apagada para todos os {membros} membros, com todos os itens.",
+  "@deleteAccountOwnerWarning": {
+    "placeholders": { "casa": { "type": "String" }, "membros": { "type": "int" } }
+  },
+  "deleteAccountMemberInfo": "Você sai da casa \"{casa}\"; os outros membros continuam nela.",
+  "@deleteAccountMemberInfo": {
+    "placeholders": { "casa": { "type": "String" } }
+  },
+  "deleteAccountGoogleHint": "Para confirmar, vamos pedir que você entre com o Google de novo.",
+  "deleteAccountConfirm": "Excluir minha conta",
   "deleteHouseTitle": "Deletar casa",
   "copyCodeTooltip": "Copiar código",
   "reorderCategoriesTooltip": "Reordenar categorias",

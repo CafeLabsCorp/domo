@@ -157,6 +157,33 @@ class AppLocalizationsPt extends AppLocalizations {
   String get leave => 'Sair';
 
   @override
+  String get deleteAccount => 'Excluir conta';
+
+  @override
+  String get deleteAccountTitle => 'Excluir conta';
+
+  @override
+  String get deleteAccountBody =>
+      'Sua conta e seus dados serão apagados de forma definitiva. Esta ação não pode ser desfeita.';
+
+  @override
+  String deleteAccountOwnerWarning(String casa, int membros) {
+    return 'A casa \"$casa\" foi criada por você e será apagada para todos os $membros membros, com todos os itens.';
+  }
+
+  @override
+  String deleteAccountMemberInfo(String casa) {
+    return 'Você sai da casa \"$casa\"; os outros membros continuam nela.';
+  }
+
+  @override
+  String get deleteAccountGoogleHint =>
+      'Para confirmar, vamos pedir que você entre com o Google de novo.';
+
+  @override
+  String get deleteAccountConfirm => 'Excluir minha conta';
+
+  @override
   String get deleteHouseTitle => 'Deletar casa';
 
   @override
