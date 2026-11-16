@@ -53,6 +53,7 @@ class DefaultFirebaseOptions {
     projectId: 'domo-cafelabs',
     authDomain: 'domo-cafelabs.firebaseapp.com',
     storageBucket: 'domo-cafelabs.firebasestorage.app',
+    measurementId: 'G-WDLZ4J30VV',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -69,5 +70,6 @@ class DefaultFirebaseOptions {
     projectId: 'domo-cafelabs',
     authDomain: 'domo-cafelabs.firebaseapp.com',
     storageBucket: 'domo-cafelabs.firebasestorage.app',
+    measurementId: 'G-WDLZ4J30VV',
   );
 }
