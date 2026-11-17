@@ -44,7 +44,6 @@ Contact: `contato@cafelabs.net`.
   Google account.
 - Sign-up is **allowed from age 13**. By creating an account you state that you
   are 13 or older. Anyone under 18 should use Domo with a guardian's knowledge.
-  `TODO: confirmar` the minimum age with the lawyer (see Privacy Policy, item 9).
 - When signing up with email and password you provide a **name**, which is what
   other house members see. Use a name your house will recognize.
 - The account is **personal**. You are responsible for keeping your password
@@ -69,8 +68,7 @@ Contact: `contato@cafelabs.net`.
 - By joining a house you agree that your name and photo (from your Google
   account, if any) are visible to the other active members. Your email address
   is not shown (Privacy Policy, item 3.2).
-- You can leave a house at any time. `TODO: confirmar` what happens when the
-  house creator wants to leave.
+- You can leave a house at any time. The house creator cannot leave the house: the app does not offer that option, and transferring a house does not exist (they can delete the house or their own account).
 
 ## 4. What you write in Domo
 
@@ -112,8 +110,7 @@ prejudice to applicable civil and criminal liability.
 Domo is provided **"as is"**, free of charge, at an early stage. There is no
 guarantee of uninterrupted availability.
 
-Café Labs does not keep automatic backups of house data at this stage
-(`TODO: confirmar`). Domo has no in-app data export yet; a copy can be requested
+Café Labs does not keep automatic backups of house data at this stage. Domo has no in-app data export yet; a copy can be requested
 by email (section 13).
 
 Café Labs may change, suspend or discontinue the service. In case of permanent

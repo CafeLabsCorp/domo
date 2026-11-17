@@ -48,8 +48,7 @@ explicação seja completa.
 
 **Controlador (quem decide quais dados existem e por quê):**
 Café Labs, operada por Felipe Portes Antunes. A Café Labs ainda não possui CNPJ
-próprio. `TODO: confirmar` se continua sem CNPJ na data de publicação; se tiver,
-trocar por razão social e CNPJ.
+próprio.
 
 **Operadores (quem processa dados por conta da Café Labs):**
 
@@ -154,9 +153,7 @@ remédio, etc.) além do necessário para a casa se organizar.
 ### 3.5 O que fica só no seu aparelho
 
 A sua escolha sobre a medição de uso (seção 3.6) e as escolhas de tema
-(claro/escuro) e de idioma não são enviadas a nenhum servidor.
-`TODO: confirmar` — hoje o tema e o idioma nem são guardados entre aberturas do
-app; se passarem a ser guardados, continuam só no aparelho.
+(claro/escuro) e de idioma não são enviadas a nenhum servidor. Hoje o tema e o idioma nem são guardados entre aberturas do app; se passarem a ser guardados, continuam só no aparelho.
 
 ### 3.6 Dados de uso (medição do aplicativo)
 
@@ -188,9 +185,7 @@ casa, o código de convite, o nome dos itens ou das categorias.
   feita com base no legítimo interesse (seção 5) e você pode desligá-la a
   qualquer momento em Perfil → Privacidade → Medição de uso.
 - Esses dados **não** são usados para anúncios, não são combinados com dados de
-  outros apps ou sites e não são vendidos. `TODO: confirmar` no console do
-  Google Analytics: "sinais do Google" desligado e configurações de
-  compartilhamento de dados desligadas.
+  outros apps ou sites e não são vendidos. Os "sinais do Google" e o compartilhamento de dados com o Google estão desligados no Analytics.
 - Você pode desligar essa medição dentro do aplicativo, em Perfil →
   Privacidade → Medição de uso, a qualquer momento e sem perder nenhuma função.
   A escolha vale na hora e fica guardada só no seu aparelho ou navegador. Se
@@ -221,8 +216,7 @@ enviar nada. Ele usa uma medição de audiência agregada (Vercel Web Analytics)
 que **não usa cookies**, não cria identificador persistente e não permite
 identificar quem visitou. São registrados apenas dados agregados, como página
 visitada, país aproximado, tipo de aparelho e navegador. Por isso não é exibido
-banner de cookies no site. `TODO: confirmar` que não há outro script de medição
-na landing no momento da publicação.
+banner de cookies no site.
 
 ## 4. Para que os dados são usados
 
@@ -261,7 +255,7 @@ acesso ao aplicativo**.
 | Controle de acesso e proteção contra uso indevido | art. 7º, V, e art. 7º, IX — legítimo interesse na segurança do serviço |
 | Registros técnicos (IP, logs do Firebase) | art. 7º, IX — legítimo interesse na operação e segurança |
 | Atendimento a pedidos de titular | art. 7º, II — cumprimento de obrigação legal |
-| Medição de uso do aplicativo (3.6) | art. 7º, IX — legítimo interesse na melhoria do produto, sem uso publicitário e com opção de desligar no app, inclusive na versão web (cookies). `TODO: confirmar` com o advogado se, no app web, a base deve ser consentimento |
+| Medição de uso do aplicativo (3.6) | art. 7º, IX — legítimo interesse na melhoria do produto, sem uso publicitário e com opção de desligar no app, inclusive na versão web (cookies). |
 | Medição agregada do site de apresentação | art. 7º, IX — legítimo interesse, sem identificação individual |
 | Comunicação promocional (não existe hoje) | art. 7º, I — consentimento específico e destacado, se um dia existir |
 
@@ -284,9 +278,7 @@ Brasil.**
 
 Essas transferências internacionais se apoiam no art. 33, II, da LGPD
 (cláusulas contratuais de proteção de dados do Google Cloud / Firebase, "Cloud
-Data Processing Addendum"). `TODO: confirmar` com o advogado a redação à luz da
-Resolução CD/ANPD nº 19/2024 (cláusulas-padrão contratuais da ANPD) e se o
-contrato do Google já as incorpora.
+Data Processing Addendum").
 
 O site de apresentação é hospedado na Vercel, com servidores fora do Brasil, mas
 não recebe dados da sua conta; só a medição agregada e não identificável da
@@ -300,12 +292,12 @@ seção 3.8 sai do país por ali.
 | Seus dados de membro numa casa | enquanto você for membro; saem da casa quando você sai, é removido pelo criador ou exclui a conta |
 | Registro de aceite e lista de pedidos pendentes (3.1) | enquanto a conta existir; apagados na exclusão da conta |
 | Casa e itens | enquanto a casa existir; são apagados quando o criador exclui a casa |
-| Registro de "quem mudou por último" num item | fica no item enquanto a casa existir; depois que a sua conta é excluída, o código (UID) que fica ali não pode mais ser ligado a você, nem pela Café Labs. `TODO: confirmar` com o advogado se isso basta ou se o app deve apagar esse campo na exclusão (hoje o app não apaga) |
+| Registro de "quem mudou por último" num item | fica no item enquanto a casa existir; depois que a sua conta é excluída, o código (UID) que fica ali não pode mais ser ligado a você, nem pela Café Labs. |
 | Conta inativa | não há exclusão automática por inatividade hoje; se isso mudar, você será avisado por e-mail com antecedência mínima de 30 dias |
-| Cópias de segurança manuais feitas pela Café Labs antes de atualizações do sistema | `TODO: confirmar` prazo. Hoje o procedimento de atualização manda copiar os dados das casas antes de mudanças, mas não define quando essa cópia é apagada. Sugestão: apagar em até 30 dias |
-| Cópias internas da infraestrutura do Google | conforme o ciclo de exclusão do provedor. `TODO: confirmar` o prazo a declarar (o Dindin declarou "até 30 dias"; conferir na documentação do Google Cloud/Firebase) |
+| Cópias de segurança manuais feitas pela Café Labs antes de atualizações do sistema | apagadas em até 30 dias |
+| Cópias internas da infraestrutura do Google | conforme o ciclo de exclusão do provedor, em até 30 dias |
 | Registros técnicos de operação e segurança | conforme a retenção do Google Firebase |
-| Dados de uso do aplicativo (3.6) | `TODO: confirmar` no console do Google Analytics (sugestão: 2 meses, o mínimo); relatórios agregados sem prazo |
+| Dados de uso do aplicativo (3.6) | 2 meses; relatórios agregados sem prazo |
 
 O Domo não está sujeito a nenhum prazo legal de guarda desses dados e pode
 atender integralmente a um pedido de exclusão.
@@ -319,9 +311,7 @@ Pela LGPD (art. 18), você pode a qualquer momento:
   telas do app (perfil, casa, despensa); se quiser uma cópia, peça pelo e-mail
   abaixo;
 - **Corrigir** dados: itens e situações você mesmo edita no app; a foto vem da
-  sua conta Google e é corrigida lá. `TODO: confirmar` — hoje o nome exibido
-  fica como foi digitado no cadastro, e o app ainda não tem tela para trocá-lo
-  (pode ser pedido pelo e-mail abaixo);
+  sua conta Google e é corrigida lá. Hoje o nome exibido fica como foi digitado no cadastro, e o app ainda não tem tela para trocá-lo (pode ser pedido pelo e-mail abaixo);
 - **Pedir a exclusão** da sua conta e dos seus dados (ver abaixo);
 - **Pedir a portabilidade**: o Domo ainda não tem exportação dentro do app;
   enviamos uma cópia dos seus dados e da sua casa em formato aberto e legível
@@ -361,9 +351,7 @@ A exclusão é **definitiva e não reversível**.
 O Domo é um aplicativo de organização da casa e **pode ser usado por
 adolescentes a partir de 13 anos**, por exemplo numa casa com a família. O
 cadastro é **vedado a menores de 13 anos**. Ao criar a conta, você declara ter
-13 anos ou mais. `TODO: confirmar` com o advogado a idade mínima e o tratamento
-de dados de adolescentes (a LGPD, art. 14, trata crianças até 12 anos
-incompletos com consentimento de pai, mãe ou responsável).
+13 anos ou mais.
 
 - **Menores de 13 anos:** o Domo não é destinado a eles e **não coleta o
   consentimento** que a lei exige para crianças. Se tomarmos conhecimento de

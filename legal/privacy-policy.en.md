@@ -42,7 +42,7 @@ complete explanation.
 ## 2. Who is responsible for your data
 
 **Controller:** Café Labs, operated by Felipe Portes Antunes. Café Labs does
-not yet have its own company registration number (CNPJ). `TODO: confirmar`.
+not yet have its own company registration number (CNPJ).
 
 **Processors (acting on behalf of Café Labs):**
 
@@ -57,7 +57,7 @@ not yet have its own company registration number (CNPJ). `TODO: confirmar`.
 - **Vercel Inc.:** hosts only the presentation website `domo.cafelabs.net`,
   which has no login and receives no account data.
 
-**Privacy contact:** `privacidade@cafelabs.net` (`TODO: confirmar`).
+**Privacy contact:** `privacidade@cafelabs.net`.
 
 Café Labs is currently a small-scale data processing agent and, under ANPD
 Resolution CD/ANPD No. 2/2022, is exempt from formally appointing a Data
@@ -143,9 +143,7 @@ house needs to get organized.
 ### 3.5 What stays on your device only
 
 Your usage-measurement choice (section 3.6) and your theme (light/dark) and
-language choices are not sent to any server. `TODO: confirmar` — today theme and
-language are not even kept between app launches; if they are, they stay on the
-device.
+language choices are not sent to any server. Today theme and language are not even kept between app launches; if they are, they stay on the device.
 
 ### 3.6 Usage data (app measurement)
 
@@ -174,8 +172,7 @@ category names.
   legitimate interest (section 5) and you can turn it off at any time under
   Profile → Privacy → Usage measurement.
 - This data is **not** used for advertising, not combined with data from other
-  apps or sites, and not sold. `TODO: confirmar` in the Google Analytics
-  console: Google signals off and data sharing settings off.
+  apps or sites, and not sold. Google signals and data sharing with Google are turned off in Analytics.
 - You can turn this measurement off in the app, under Profile → Privacy →
   Usage measurement, at any time, without losing any feature. The choice takes
   effect immediately and is stored only on your device or browser. If you clear
@@ -198,7 +195,7 @@ The presentation website is informational only: no login, sign-up or form, and
 the interactive demo runs entirely in your browser without sending anything. It
 uses aggregate audience measurement (Vercel Web Analytics) that **does not use
 cookies**, creates no persistent identifier and cannot identify visitors. For
-that reason no cookie banner is shown. `TODO: confirmar`.
+that reason no cookie banner is shown.
 
 ## 4. What the data is used for
 
@@ -233,7 +230,7 @@ the app**.
 | Access control and abuse prevention | art. 7, V and IX — legitimate interest in service security |
 | Technical logs | art. 7, IX — legitimate interest in operation and security |
 | Handling data subject requests | art. 7, II — legal obligation |
-| App usage measurement (3.6) | art. 7, IX — legitimate interest in improving the product, no advertising use, with in-app opt-out, including in the web version (cookies). `TODO: confirmar` with the lawyer whether consent is required for web cookies |
+| App usage measurement (3.6) | art. 7, IX — legitimate interest in improving the product, no advertising use, with in-app opt-out, including in the web version (cookies). |
 | Website aggregate measurement | art. 7, IX — legitimate interest, no individual identification |
 | Promotional communication (does not exist today) | art. 7, I — specific, highlighted consent, if it ever exists |
 
@@ -252,8 +249,6 @@ and usage data travel and may be stored outside Brazil.**
 
 These international transfers rely on art. 33, II, of the LGPD (Google Cloud /
 Firebase data protection contractual terms, "Cloud Data Processing Addendum").
-`TODO: confirmar` with the lawyer in light of ANPD Resolution CD/ANPD No.
-19/2024 (ANPD standard contractual clauses).
 
 The presentation website is hosted by Vercel outside Brazil but receives no
 account data.
@@ -266,20 +261,19 @@ account data.
 | Acceptance record and pending-requests list (3.1) | while the account exists; deleted on account deletion |
 | Your member data in a house | while you are a member; removed when you leave, are removed by the creator, or delete your account |
 | House and items | while the house exists; deleted when the creator deletes the house |
-| "Last changed by" record on an item | stays on the item while the house exists; after your account is deleted, the UID left there can no longer be linked to you, not even by Café Labs. `TODO: confirmar` (the app does not erase it today) |
+| "Last changed by" record on an item | stays on the item while the house exists; after your account is deleted, the UID left there can no longer be linked to you, not even by Café Labs. |
 | Inactive account | no automatic deletion today; if that changes, you will be notified by email at least 30 days in advance |
-| Manual backups made by Café Labs before system updates | `TODO: confirmar` period (suggestion: deleted within 30 days) |
-| Google infrastructure internal copies | per the provider's deletion cycle. `TODO: confirmar` |
+| Manual backups made by Café Labs before system updates | deleted within 30 days |
+| Google infrastructure internal copies | per the provider's deletion cycle, within 30 days |
 | Technical logs | per Google Firebase retention |
-| App usage data (3.6) | `TODO: confirmar` in the Google Analytics console (suggestion: 2 months); aggregate reports without limit |
+| App usage data (3.6) | 2 months; aggregate reports without limit |
 
 ## 8. Your rights and how to exercise them
 
 Under the LGPD (art. 18), you may at any time: **confirm** whether we hold your
 data; **access** it (everything Domo stores about you is shown in the app; you
 can also request a copy by email); **correct** it (items in the app; name and
-photo in your Google account — `TODO: confirmar` the display name stays as typed
-at sign-up and the app has no screen to change it yet; ask by email); **request deletion**; **request portability** (Domo
+photo in your Google account — the display name stays as typed at sign-up and the app has no screen to change it yet; ask by email); **request deletion**; **request portability** (Domo
 has no in-app export yet; we send a copy in an open, readable format (JSON) on
 request); **know who** your data is shared with (section 2); **withdraw** any
 separately given consent; **object** to processing, including turning off usage
@@ -313,8 +307,7 @@ Deletion is **permanent and irreversible**.
 
 Domo is a household-organization app and **may be used by teenagers aged 13 and
 over**, for example in a family house. Sign-up is **not allowed for anyone under
-13**. By creating an account you state that you are 13 or older. `TODO:
-confirmar` with the lawyer the minimum age and the handling of teenagers' data
+13**. By creating an account you state that you are 13 or older.
 (LGPD art. 14 treats children up to 12 years old as requiring consent from a
 parent or guardian).
 

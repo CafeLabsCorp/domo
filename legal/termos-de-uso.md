@@ -26,8 +26,7 @@ carrinho), e uma lista de compras que sai dela. Os itens são organizados em
 **casas**, e cada casa tem membros que veem e editam a mesma lista.
 
 O Domo é fornecido pela **Café Labs**, operada por Felipe Portes Antunes. A
-Café Labs ainda não possui CNPJ próprio (`TODO: confirmar` na data de
-publicação). Contato: `contato@cafelabs.net`.
+Café Labs ainda não possui CNPJ próprio. Contato: `contato@cafelabs.net`.
 
 ### 1.1 O que o Domo NÃO é
 
@@ -46,8 +45,7 @@ publicação). Contato: `contato@cafelabs.net`.
   Google.
 - O cadastro é **permitido a partir de 13 anos**. Ao criar a conta, você
   declara ter 13 anos ou mais. Quem tem menos de 18 anos deve usar o Domo com o
-  conhecimento de um responsável. `TODO: confirmar` a idade mínima com o
-  advogado (ver item 9 da Política de Privacidade).
+  conhecimento de um responsável.
 - No cadastro com e-mail e senha você informa um **nome**, que é o que os outros
   membros da casa veem. Use um nome pelo qual a sua casa reconheça você.
 - A conta é **pessoal**. Você é responsável por manter a sua senha em sigilo e
@@ -75,9 +73,7 @@ publicação). Contato: `contato@cafelabs.net`.
 - Ao entrar numa casa, você concorda que o seu nome e a sua foto (da conta
   Google, se houver) fiquem visíveis para os outros membros ativos. O seu
   e-mail não é mostrado. Ver a Política de Privacidade, item 3.2.
-- Você pode sair de uma casa a qualquer momento. `TODO: confirmar` o que
-  acontece quando quem criou a casa quer sair (hoje o app não oferece essa
-  opção a essa pessoa; transferir a casa não existe).
+- Você pode sair de uma casa a qualquer momento. Quem criou a casa não pode sair dela: o app não oferece essa opção a essa pessoa e transferir a casa não existe (a pessoa pode excluir a casa ou a própria conta).
 
 ---
 
@@ -134,8 +130,7 @@ interrupções para manutenção, falhas de serviços de terceiros (Google Fireb
 Vercel, provedores de internet) ou correções.
 
 A Café Labs não mantém cópias de segurança automáticas dos dados das casas
-nesta fase. `TODO: confirmar` se isso deve constar assim (hoje o Domo está no
-plano gratuito do Firebase, sem backup agendado). O Domo ainda não tem
+nesta fase. O Domo ainda não tem
 exportação de dados dentro do app; uma cópia pode ser pedida pelo e-mail da
 seção 13.
 
