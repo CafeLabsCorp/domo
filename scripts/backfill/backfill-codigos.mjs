@@ -43,7 +43,7 @@ import { readFileSync } from 'node:fs';
 import { initializeApp, cert, applicationDefault } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
-const PROJECT_ID = 'domo-8b336';
+const PROJECT_ID = 'domo-cafelabs';
 const COMMIT = process.argv.includes('--commit');
 
 function initAdmin() {

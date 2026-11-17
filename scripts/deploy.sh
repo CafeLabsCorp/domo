@@ -30,7 +30,7 @@
 #
 # Requires:
 #   - `firebase` CLI on PATH, logged in (`firebase login`) with deploy access
-#     to domo-8b336. The deploy itself needs NO service-account key — an
+#     to domo-cafelabs. The deploy itself needs NO service-account key — an
 #     interactive user login is enough. (The OPTIONAL codigos backfill in
 #     scripts/backfill/ does need a service-account key, but only if you pick
 #     the script over the manual console path — see docs/DEPLOY.md "Backfill".
@@ -46,7 +46,7 @@
 
 set -euo pipefail
 
-PROJECT_ID="domo-8b336"
+PROJECT_ID="domo-cafelabs"
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 log()  { printf '\n\033[1;34m==>\033[0m %s\n' "$1"; }

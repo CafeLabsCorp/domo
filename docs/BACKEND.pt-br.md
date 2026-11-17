@@ -5,12 +5,12 @@
 Referência operacional para o backend Firestore do Domo. Leia isto antes de
 qualquer deploy que toque em `firestore.rules` ou `firestore.indexes.json`.
 
-Projeto: `domo-8b336` · Plano: **Spark (gratuito)** · Auth: Firebase Auth ·
+Projeto: `domo-cafelabs` · Plano: **Spark (gratuito)** · Auth: Firebase Auth ·
 DB: Cloud Firestore.
 
 ## Gate de deploy: BACKUP PRIMEIRO, e o deploy é um passo humano deliberado
 
-Fazer deploy das regras em `domo-8b336` **NÃO é automático**. É uma ação
+Fazer deploy das regras em `domo-cafelabs` **NÃO é automático**. É uma ação
 manual e revisada. Antes de rodar qualquer
 `firebase deploy --only firestore:rules`:
 
@@ -70,7 +70,7 @@ nenhum fluxo existente, elas só adicionam fluxos novos e opcionais.
 ## Status das regras: corrigido e implantado (resolvido no ciclo de refactor de 2026-07-18)
 
 **Status: as novas regras abaixo ESTÃO implantadas em produção**
-(`domo-8b336`), junto com as três co-mudanças de cliente descritas em
+(`domo-cafelabs`), junto com as três co-mudanças de cliente descritas em
 "Co-mudança de cliente obrigatória" abaixo — ver
 `mind/projetos/produtos-cafelabs/domo.md`. Os parágrafos abaixo descrevem o
 estado encontrado **no início daquele ciclo, antes do fix** — mantidos aqui
@@ -338,7 +338,7 @@ owner, resolução get-by-id, list negado).
 ## Smoke test pós-deploy (não há staging)
 
 O Spark não tem um projeto de staging separado, então a única verificação
-ponta a ponta é contra o próprio `domo-8b336`, logo depois do deploy, com
+ponta a ponta é contra o próprio `domo-cafelabs`, logo depois do deploy, com
 contas descartáveis. Faça isso antes de considerar o deploy concluído:
 
 1. Duas contas de teste do Auth (A e B).

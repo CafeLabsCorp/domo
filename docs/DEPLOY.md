@@ -8,7 +8,7 @@ gate exists (backup-first, and the rules + three-part client co-change that
 must ship together for join-by-code) — this file is the *how*, plus CI and
 rollback.
 
-Project: `domo-8b336` · Plan: **Spark (free)** · Hosting:
+Project: `domo-cafelabs` · Plan: **Spark (free)** · Hosting:
 `app.domo.cafelabs.net` (Firebase Hosting). There is no separate
 staging project — Spark's single project doubles as the only environment,
 which is why the post-deploy smoke test in `docs/BACKEND.md` runs against
@@ -80,10 +80,10 @@ as a script with hard checkpoints, so a step can't be skipped by accident:
 4. Runs `flutter analyze` + `flutter test`, then the rules emulator suite —
    aborts the deploy if either fails.
 5. Final interactive confirmation showing exactly what will run.
-6. `firebase deploy --only firestore:rules --project domo-8b336` (only if
+6. `firebase deploy --only firestore:rules --project domo-cafelabs` (only if
    `firestore.rules` changed).
 7. `flutter build web` + `firebase deploy --only hosting --project
-   domo-8b336`.
+   domo-cafelabs`.
 
 The gate order is deliberate: **backup → backfill → deploy rules + client →
 smoke test.** The backfill must land *before* the rules, because the rules are
@@ -96,7 +96,7 @@ scripts/deploy.sh
 ```
 
 Requires the `firebase` CLI on `PATH`, logged in (`firebase login`) with
-deploy access to `domo-8b336`. The deploy itself needs **no service-account
+deploy access to `domo-cafelabs`. The deploy itself needs **no service-account
 key** — an interactive user login is enough. The *optional* `codigos` backfill
 script (`scripts/backfill/`, "Backfill" below) is the one thing that would need
 a service-account key, and only if you pick the script over the manual console
@@ -112,7 +112,7 @@ sequence is still safe:
 
 ```bash
 flutter build web
-firebase deploy --only hosting --project domo-8b336
+firebase deploy --only hosting --project domo-cafelabs
 ```
 
 ## Backfill — `codigos/{CODE}` for pre-existing houses (MANDATORY before the rules deploy)
@@ -182,7 +182,7 @@ path, no separate backup needed:
 ```bash
 git log --oneline -- firestore.rules        # find the last-good commit
 git show <good-commit>:firestore.rules > firestore.rules
-firebase deploy --only firestore:rules --project domo-8b336
+firebase deploy --only firestore:rules --project domo-cafelabs
 git checkout -- firestore.rules              # restore the working tree after
 ```
 
@@ -200,7 +200,7 @@ rebuild:
   previous release -> **Rollback**. A few clicks, no CLI needed, and the
   fastest path back to a known-good client.
 - Or from the CLI: `firebase hosting:clone <site>:<previous-release-id>
-  <site>:live --project domo-8b336`.
+  <site>:live --project domo-cafelabs`.
 
 ### User data
 

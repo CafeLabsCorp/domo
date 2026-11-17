@@ -52,7 +52,7 @@ App de gestão doméstica para famílias e grupos — Android e Web.
 
 ## Configuração
 
-O Domo fala com um único projeto Firebase (`domo-8b336`, plano Spark/gratuito)
+O Domo fala com um único projeto Firebase (`domo-cafelabs`, plano Spark/gratuito)
 tanto para Auth quanto Firestore. Diferente da maioria das stacks, a
 configuração de cliente do Firebase aqui **não é um segredo** — ela só
 identifica o projeto pro SDK do cliente; todo o controle de acesso de verdade
@@ -62,9 +62,9 @@ gitignore:
 
 | Arquivo | Propósito | De onde vem |
 |---|---|---|
-| `lib/firebase_options.dart` | Configuração de cliente do Firebase (todas as plataformas), gerada pela CLI do FlutterFire | `flutterfire configure`, rodado uma vez contra o projeto Firebase `domo-8b336` |
+| `lib/firebase_options.dart` | Configuração de cliente do Firebase (todas as plataformas), gerada pela CLI do FlutterFire | `flutterfire configure`, rodado uma vez contra o projeto Firebase `domo-cafelabs` |
 | `android/app/google-services.json` | Configuração do Firebase específica do Android | console do Firebase → Configurações do projeto → app Android, ou regenerado por `flutterfire configure` |
-| `.firebaserc` | Aponta a CLI `firebase` para o projeto `domo-8b336` por padrão | commitado, uma linha |
+| `.firebaserc` | Aponta a CLI `firebase` para o projeto `domo-cafelabs` por padrão | commitado, uma linha |
 | `firebase.json` | Caminhos de rules/indexes do Firestore, portas do emulador, config do Hosting | commitado |
 
 Para apontar este código pra um projeto Firebase **diferente** (ex.: um seu

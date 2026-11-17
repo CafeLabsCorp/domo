@@ -46,7 +46,7 @@ node backfill-codigos.mjs --commit   # actually writes the missing docs
 - **Conflict-aware** — if a code already maps to a *different* casaId, it is
   reported and skipped, never overwritten. Resolve those by hand.
 - **Project-pinned** — aborts if the key is for a project other than
-  `domo-8b336`, so it can't write to the wrong project.
+  `domo-cafelabs`, so it can't write to the wrong project.
 - **Spark-safe** — normal Firestore reads/writes, well under free-tier quota for
   a pilot.
 

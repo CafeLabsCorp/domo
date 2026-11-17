@@ -5,12 +5,12 @@
 Operational reference for Domo's Firestore backend. Read this before any deploy
 that touches `firestore.rules` or `firestore.indexes.json`.
 
-Project: `domo-8b336` · Plan: **Spark (free)** · Auth: Firebase Auth ·
+Project: `domo-cafelabs` · Plan: **Spark (free)** · Auth: Firebase Auth ·
 DB: Cloud Firestore.
 
 ## Deploy gate: BACKUP FIRST, and deploy is a deliberate human step
 
-Deploying rules to `domo-8b336` is **NOT automatic**. It is a manual,
+Deploying rules to `domo-cafelabs` is **NOT automatic**. It is a manual,
 reviewed action. Before running any `firebase deploy --only firestore:rules`:
 
 1. **Back up production first.** On Spark there is no scheduled Firestore
@@ -60,7 +60,7 @@ opt-in ones.
 
 ## Rules status: fixed and deployed (resolved as of the 2026-07-18 refactor cycle)
 
-**Status: the new rules below ARE deployed to production** (`domo-8b336`),
+**Status: the new rules below ARE deployed to production** (`domo-cafelabs`),
 together with the three client co-changes described in "Required client
 co-change" below — see `mind/projetos/produtos-cafelabs/domo.md`. The
 paragraphs below describe the state found **at the start of that cycle,
@@ -312,7 +312,7 @@ list denied).
 ## Post-deploy smoke test (there is no staging)
 
 Spark has no separate staging project, so the only end-to-end verification is
-against `domo-8b336` itself, right after deploy, with throwaway accounts. Do
+against `domo-cafelabs` itself, right after deploy, with throwaway accounts. Do
 this before considering the deploy done:
 
 1. Two test Auth accounts (A and B).
